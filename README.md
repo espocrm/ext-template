@@ -1,6 +1,6 @@
-# Extension repository template
+# Template repository for EspoCRM extensions
 
-Copy this repository and use it as a template for your extension.
+Create a repository for your extension from this template.
 
 ## Preparing repository
 
