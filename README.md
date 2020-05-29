@@ -65,7 +65,7 @@ Note: It will remove a previously installed EspoCRM instance, but keep the datab
 
 ### Copying extension files to EspoCRM instance
 
-You need to run this command every time you make changes in `src` directory and you want to try them on Espo instance.
+You need to run this command every time you make changes in `src` directory and you want to try these changes on Espo instance.
 
 Command:
 
