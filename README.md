@@ -40,9 +40,7 @@ return [
 
 ## Building
 
-After building, EspoCRM instance with installed extension will be available at `site` directory.
-
-You can access it with credentials:
+After building, EspoCRM instance with installed extension will be available at `site` directory. You will be able to access it with credentials:
 
 * Username: admin
 * Password: 1
