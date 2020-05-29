@@ -12,6 +12,8 @@ php init.php
 
 It will ask to enter an extension name and some other information.
 
+After that, you can remove `init.php` file from your respository. Commit changes and proceed to configuration & building.
+
 
 ## Configuration
 
