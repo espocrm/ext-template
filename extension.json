@@ -1,0 +1,12 @@
+{
+    "module": "{@name}",
+    "name": "{@nameLabel}",
+    "description": "{@description}",
+    "author": "{@author}",
+    "acceptableVersions": [
+        ">=5.9.0"
+    ],
+    "php": [
+        ">=7.2"
+    ]
+}

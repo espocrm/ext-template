@@ -1,0 +1,5 @@
+build/
+site/
+node_modules
+config.json
+config.php

@@ -1,0 +1,23 @@
+{
+    "espocrm": {
+        "repository": "https://github.com/espocrm/espocrm.git",
+        "branch": "stable"
+    },
+    "database": {
+        "driver": "pdo_mysql",
+        "host": "localhost",
+        "port": "",
+        "charset": "utf8mb4",
+        "dbname": "ext-{@nameHyphen}",
+        "user": "root",
+        "password": ""
+    },
+    "install": {
+        "language": "en_US",
+        "defaultOwner": "www-data",
+        "defaultGroup": "www-data",
+        "siteUrl": "http://localhost/ext-{@nameHyphen}/site",
+        "adminUsername": "admin",
+        "adminPassword": "1"
+    }
+}
