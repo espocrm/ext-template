@@ -103,6 +103,18 @@ Note: The version number is taken from `package.json`.
 2. Run `node build --copy`.
 3. Test changes in EspoCRM instance at `site` dir.
 
+## Versioning
+
+The version number is stored in `package.json` and `package-lock.json`.
+
+Bumping version:
+
+```
+npm version patch
+npm version minor
+npm version major
+```
+
 ## Tests
 
 Prepare:
@@ -122,3 +134,5 @@ Integration tests:
 ```
 vendor/bin/phpunit --bootstrap=./vendor/autoload.php tests/integration/Espo/Modules/{@name}
 ```
+
+
