@@ -51,7 +51,7 @@ After building, EspoCRM instance with installed extension will be available at `
 
 1. You need to have *node*, *npm*, *composer* installed.
 2. Run `npm install`.
-3. Create a database. A name is set in the config file.
+3. Create a database. The database name is set in the config file.
 
 ### Full EspoCRM instance building
 
