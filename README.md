@@ -113,7 +113,7 @@ You can block out new entity types right in Espo (using Entity Manager) and then
 4. Run `node build --copy`. It will move files from the repository to Espo build (`site` directory).
 5. Clear cache in Espo.
 6. Test in Espo.
-7 Comit changes.
+7. Comit changes.
 8. Profit.
 
 
