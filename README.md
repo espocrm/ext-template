@@ -107,10 +107,10 @@ Note: The version number is taken from `package.json`.
 
 You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
 
-1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` directory after building).
+1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
 2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/application/Modules/{ModuleName}` and apply needed modifications to files.
 3. Remove files from `site/custom`.
-4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/application/Espo/Modules/{ModuleName}}` directory).
+4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/application/Espo/Modules/{ModuleName}}` dir).
 5. Clear cache in Espo.
 6. Test in Espo.
 7. Commit changes.
