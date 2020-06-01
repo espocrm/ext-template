@@ -116,6 +116,7 @@ You can block out new entity types right in Espo (using Entity Manager) and then
 7. Commit changes.
 8. Profit.
 
+You can remove `copy-custom.js` for the repository if you don't plan to use it future.
 
 ## Versioning
 
