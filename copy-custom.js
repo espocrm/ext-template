@@ -25,8 +25,6 @@ function copyCustom () {
         entityTypeList.push(file.substr(0, file.length - 4));
     });
 
-
-
     entityTypeList.forEach(function (eType) {
         var scopeDefsFile = distPath + '/Resources/metadata/scopes/' + eType + '.json';
         var defs = require(scopeDefsFile);
@@ -49,7 +47,6 @@ function copyCustom () {
 
     }, this);
 
-
     console.log(
-        "Done.\nCustom files was copied from 'site' to 'src'. Now you can remove files from 'site/custom' and commit changes.");
+        "Done.\nCustom files were copied from 'site' to 'src'. Now you can remove files from 'site/custom' and commit changes.");
 }
