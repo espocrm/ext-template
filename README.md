@@ -149,3 +149,7 @@ Integration tests:
 ```
 vendor/bin/phpunit --bootstrap=./vendor/autoload.php tests/integration/Espo/Modules/{@name}
 ```
+
+## License
+
+Change a license in `LICENSE.txt` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
