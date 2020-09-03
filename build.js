@@ -3,6 +3,7 @@ const unzipper = require('unzipper');
 const mv = require('mv');
 const cp = require('child_process');
 var request = require('request');
+const chokidar = require('chokidar');
 
 const helpers = require('./helpers.js');
 const extensionParams = require('./extension.json');
@@ -37,6 +38,12 @@ if (helpers.hasProcessParam('fetch')) {
 if (helpers.hasProcessParam('copy')) {
     copyExtension().then(function () {
         console.log('Done');
+    });
+}
+if (helpers.hasProcessParam('watch')) {
+    chokidar.watch('./src').on('all', (event, path) => {
+        copyExtension().then(function () {
+        });
     });
 }
 if (helpers.hasProcessParam('after-install')) {
