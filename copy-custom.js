@@ -21,9 +21,11 @@ function copyCustom () {
 
     var entityTypeList = [];
 
-    fs.readdirSync(distPath + '/Entities').forEach(file => {
-        entityTypeList.push(file.substr(0, file.length - 4));
-    });
+    if (fs.existsSync(distPath + '/Entities')) {
+        fs.readdirSync(distPath + '/Entities').forEach(file => {
+            entityTypeList.push(file.substr(0, file.length - 4));
+        });
+    }
 
     entityTypeList.forEach(function (eType) {
         var scopeDefsFile = distPath + '/Resources/metadata/scopes/' + eType + '.json';
