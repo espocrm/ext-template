@@ -178,11 +178,11 @@ vendor/bin/phpunit tests/integration/Espo/Modules/{@name}
 
 You need to set the following paths to be ignored in your IDE:
 
-* `/path/to/project/build`
-* `/path/to/project/site/build`
-* `/path/to/project/site/application/Espo/Modules/{@name}`
-* `/path/to/project/site/tests/unit/Espo/Modules/{@name}`
-* `/path/to/project/site/tests/integration/Espo/Modules/{@name}`
+* `build`
+* `site/build`
+* `site/application/Espo/Modules/{@name}`
+* `site/tests/unit/Espo/Modules/{@name}`
+* `site/tests/integration/Espo/Modules/{@name}`
 
 ## License
 
