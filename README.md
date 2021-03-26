@@ -156,11 +156,11 @@ vendor/bin/phpunit --bootstrap=./vendor/autoload.php tests/integration/Espo/Modu
 
 You need to set the following paths to be ignored in your IDE:
 
-* /path/to/project/build
-* /path/to/project/site/build
-* /path/to/project/site/application/Espo/Modules/{@name}
-* /path/to/project/site/tests/unit/Espo/Modules/{@name}
-* /path/to/project/site/tests/integration/Espo/Modules/{@name}
+* `/path/to/project/build`
+* `/path/to/project/site/build`
+* `/path/to/project/site/application/Espo/Modules/{@name}`
+* `/path/to/project/site/tests/unit/Espo/Modules/{@name}`
+* `/path/to/project/site/tests/integration/Espo/Modules/{@name}`
 
 ## License
 
