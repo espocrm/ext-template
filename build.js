@@ -41,10 +41,15 @@ if (helpers.hasProcessParam('copy')) {
     });
 }
 if (helpers.hasProcessParam('watch')) {
-    chokidar.watch('./src').on('all', (event, path) => {
-        copyExtension().then(function () {
-        });
+    // Initialize watcher.
+    const watcher = chokidar.watch('./src/files', {
+        ignored: /(^|[\/\\])\../, // ignore dotfiles
+        ignoreInitial: true,
+        persistent: true
     });
+
+    // Add event listeners.
+    watcher.on('all', path => copyExtension());
 }
 if (helpers.hasProcessParam('after-install')) {
     afterInstall().then(function () {
