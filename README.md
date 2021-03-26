@@ -152,6 +152,16 @@ Integration tests:
 vendor/bin/phpunit --bootstrap=./vendor/autoload.php tests/integration/Espo/Modules/{@name}
 ```
 
+## Configuring IDE
+
+You need to set the following paths to be ignored in your IDE:
+
+* /path/to/project/build
+* /path/to/project/site/build
+* /path/to/project/site/application/Espo/Modules/{@name}
+* /path/to/project/site/tests/unit/Espo/Modules/{@name}
+* /path/to/project/site/tests/integration/Espo/Modules/{@name}
+
 ## License
 
 Change a license in `LICENSE.txt` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
