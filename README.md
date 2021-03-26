@@ -140,16 +140,38 @@ Prepare:
 2. `cd site`
 3. `grunt test`
 
-Unit tests:
+### Unit
+
+Command to run unit tests:
 
 ```
-vendor/bin/phpunit --bootstrap=./vendor/autoload.php tests/unit/Espo/Modules/{@name}
+vendor/bin/phpunit tests/unit/Espo/Modules/{@name}
 ```
 
-Integration tests:
+### Integration
+
+You need to create a config file `tests/integration/config.php`:
+
+```php
+<?php
+
+return [
+    'database' => [
+        'driver' => 'pdo_mysql',
+        'host' => 'localhost',
+        'charset' => 'utf8mb4',
+        'dbname' => 'TEST_DB_NAME',       
+        'user' => 'YOUR_DB_USER',
+        'password' => 'YOUR_DB_PASSWORD',
+    ],
+];
+```
+The file should exist before you run `node build --copy`.
+
+Command to run integration tests:
 
 ```
-vendor/bin/phpunit --bootstrap=./vendor/autoload.php tests/integration/Espo/Modules/{@name}
+vendor/bin/phpunit tests/integration/Espo/Modules/{@name}
 ```
 
 ## Configuring IDE
