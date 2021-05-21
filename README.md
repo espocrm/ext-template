@@ -105,8 +105,18 @@ If your extension requires other extensions, there is a way to install them auto
 
 Necessary steps:
 
-1. Create the `extensions` directory in the root directory of your repository.
-2. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
+1. Add the current version of EspoCRM in the `config.php`, [see](#config-for-espocrm-instance):
+
+```php
+<?php
+return [
+    'version' => '6.2.0',
+];
+
+```
+
+2. Create the `extensions` directory in the root directory of your repository.
+3. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
 
 Extensions will be installed automatically after running the command `node build --all` or `node build --install`.
 

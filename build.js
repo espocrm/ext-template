@@ -103,33 +103,8 @@ function fetchEspo (params) {
                             fs.unlinkSync('./site/archive.zip');
 
                             helpers.moveDir('./site/espocrm-' + branch, './site').then(function () {
-                                var latestReleaseUrl = repository.replace('https://github.com', 'https://api.github.com/repos') + 'releases/latest';
-
-                                request({
-                                    url: latestReleaseUrl,
-                                    headers: {
-                                        "content-type": "application/json",
-                                        "User-Agent": "Ext-Template"
-                                    }
-                                }, function(error, response, body) {
-                                    if (body) {
-                                        try {
-                                            var data = JSON.parse(body);
-                                        } catch (e) {
-                                            var data = {};
-                                        }
-
-                                        var version = data.tag_name || null;
-
-                                        if (version) {
-                                            cp.execSync("sed -i \"s#'version' => '@@version'#'version' => '" + version + "'#g\" ./application/Espo/Resources/defaults/config.php",
-                                                {cwd: './site', stdio: 'ignore'});
-                                        }
-                                    }
-
                                     resolve();
                                 });
-
                             });
                         }).on('error', function () {
                             console.log('  Error while unzipping.');
