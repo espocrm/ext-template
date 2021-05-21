@@ -99,13 +99,13 @@ The package will be created in `build` directory.
 
 Note: The version number is taken from `package.json`.
 
-### Additional extensions installation
+### Installing addition extensions
 
 If your extension requires other extensions, there is a way to install them automatically while building the instance.
 
 Necessary steps:
 
-1. Add the current version of EspoCRM in the `config.php`, [see](#config-for-espocrm-instance):
+1. Add the current EspoCRM version to the `config.php`:
 
 ```php
 <?php
