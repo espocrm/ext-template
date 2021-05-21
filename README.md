@@ -99,6 +99,17 @@ The package will be created in `build` directory.
 
 Note: The version number is taken from `package.json`.
 
+### Additional extensions installation
+
+If your extension requires other extensions, there is a way to install them automatically while building the instance.
+
+Necessary steps:
+
+1. Create the `extensions` directory in the root directory of your repository.
+2. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
+
+Extensions will be installed automatically after running the command `node build --all` or `node build --install`.
+
 ## Development workflow
 
 1. Do development in `src` dir.

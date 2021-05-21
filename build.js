@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const unzipper = require('unzipper');
 const mv = require('mv');
 const cp = require('child_process');
+const path = require('path');
 var request = require('request');
 
 const helpers = require('./helpers.js');
@@ -14,10 +15,12 @@ var branch = helpers.getProcessParam('branch');
 if (helpers.hasProcessParam('all')) {
     fetchEspo({branch: branch}).then(function () {
         install().then(function () {
-            copyExtension().then(function () {
-                rebuild().then(function () {
-                    afterInstall().then(function () {
-                        console.log('Done');
+            installExtensions().then(function () {
+                copyExtension().then(function () {
+                    rebuild().then(function () {
+                        afterInstall().then(function () {
+                            console.log('Done');
+                        });
                     });
                 });
             });
@@ -26,7 +29,9 @@ if (helpers.hasProcessParam('all')) {
 }
 if (helpers.hasProcessParam('install')) {
     install().then(function () {
-        console.log('Done');
+        installExtensions().then(function () {
+            console.log('Done');
+        });
     });
 }
 if (helpers.hasProcessParam('fetch')) {
@@ -98,7 +103,33 @@ function fetchEspo (params) {
                             fs.unlinkSync('./site/archive.zip');
 
                             helpers.moveDir('./site/espocrm-' + branch, './site').then(function () {
-                                resolve();
+                                var latestReleaseUrl = repository.replace('https://github.com', 'https://api.github.com/repos') + 'releases/latest';
+
+                                request({
+                                    url: latestReleaseUrl,
+                                    headers: {
+                                        "content-type": "application/json",
+                                        "User-Agent": "Ext-Template"
+                                    }
+                                }, function(error, response, body) {
+                                    if (body) {
+                                        try {
+                                            var data = JSON.parse(body);
+                                        } catch (e) {
+                                            var data = {};
+                                        }
+
+                                        var version = data.tag_name || null;
+
+                                        if (version) {
+                                            cp.execSync("sed -i \"s#'version' => '@@version'#'version' => '" + version + "'#g\" ./application/Espo/Resources/defaults/config.php",
+                                                {cwd: './site', stdio: 'ignore'});
+                                        }
+                                    }
+
+                                    resolve();
+                                });
+
                             });
                         }).on('error', function () {
                             console.log('  Error while unzipping.');
@@ -303,8 +334,6 @@ function buildExtension () {
             resolve();
         });
 
-        const path = require('path');
-
         var currentPath = path.dirname(fs.realpathSync(__filename));
 
         archive.directory('./build/tmp', '').pipe(zipOutput);
@@ -312,4 +341,29 @@ function buildExtension () {
         archive.finalize();
 
     })
+}
+
+function installExtensions () {
+    return new Promise(function (resolve, fail) {
+
+        if (!fs.existsSync('./extensions')) {
+            resolve();
+            return;
+        }
+
+        console.log("Installing extensions from 'extensions' directory...");
+
+        fs.readdirSync('./extensions/').forEach( function (file) {
+            if (path.extname(file).toLowerCase() != '.zip') {
+                return;
+            }
+
+            console.log('  Install: ' + file);
+
+            cp.execSync("php command.php extension --file=\"../extensions/" + file + "\"", {cwd: './site', stdio: 'ignore'});
+        });
+
+        resolve();
+
+    });
 }
