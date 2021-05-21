@@ -1,6 +1,7 @@
-build/
-site/
-tests/integration/config.php
-node_modules
-config.json
-config.php
+/build/
+/site/
+/tests/integration/config.php
+/node_modules
+/config.json
+/config.php
+/extensions/
