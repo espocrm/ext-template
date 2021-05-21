@@ -19,7 +19,9 @@ if (helpers.hasProcessParam('all')) {
                 copyExtension().then(function () {
                     rebuild().then(function () {
                         afterInstall().then(function () {
-                            console.log('Done');
+                            setOwner().then(function () {
+                                console.log('Done');
+                            });
                         });
                     });
                 });
@@ -30,7 +32,9 @@ if (helpers.hasProcessParam('all')) {
 if (helpers.hasProcessParam('install')) {
     install().then(function () {
         installExtensions().then(function () {
-            console.log('Done');
+            setOwner().then(function () {
+                console.log('Done');
+            });
         });
     });
 }
@@ -41,7 +45,9 @@ if (helpers.hasProcessParam('fetch')) {
 }
 if (helpers.hasProcessParam('copy')) {
     copyExtension().then(function () {
-        console.log('Done');
+        setOwner().then(function () {
+            console.log('Done');
+        });
     });
 }
 if (helpers.hasProcessParam('after-install')) {
@@ -103,8 +109,7 @@ function fetchEspo (params) {
                             fs.unlinkSync('./site/archive.zip');
 
                             helpers.moveDir('./site/espocrm-' + branch, './site').then(function () {
-                                    resolve();
-                                });
+                                resolve();
                             });
                         }).on('error', function () {
                             console.log('  Error while unzipping.');
@@ -340,5 +345,16 @@ function installExtensions () {
 
         resolve();
 
+    });
+}
+
+function setOwner () {
+    return new Promise(function (resolve) {
+        try {
+            cp.execSync("chown -R " + config.install.defaultOwner + ":" + config.install.defaultGroup + " .",
+                {cwd: './site', stdio: 'ignore'});
+        } catch (e) {}
+
+        resolve();
     });
 }
