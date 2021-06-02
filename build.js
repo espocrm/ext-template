@@ -3,32 +3,40 @@ const unzipper = require('unzipper');
 const mv = require('mv');
 const cp = require('child_process');
 const path = require('path');
-var request = require('request');
+const request = require('request');
 
 const helpers = require('./helpers.js');
 const extensionParams = require('./extension.json');
 
 const config = helpers.loadConfig();
 
-var branch = helpers.getProcessParam('branch');
+const branch = helpers.getProcessParam('branch');
 
 if (helpers.hasProcessParam('all')) {
-    fetchEspo({branch: branch}).then(function () {
-        install().then(function () {
-            installExtensions().then(function () {
-                copyExtension().then(function () {
-                    rebuild().then(function () {
-                        afterInstall().then(function () {
-                            setOwner().then(function () {
-                                console.log('Done');
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
+    fetchEspo({branch: branch})
+    .then(
+        () => install()
+    )
+    .then(
+        () => installExtensions()
+    )
+    .then(
+        () => copyExtension()
+    )
+    .then(
+        () => rebuild()
+    )
+    .then(
+        () => afterInstall()
+    )
+    .then(
+        () => setOwner()
+    )
+    .then(
+        () => console.log('Done')
+    );
 }
+
 if (helpers.hasProcessParam('install')) {
     install().then(function () {
         installExtensions().then(function () {
@@ -38,11 +46,13 @@ if (helpers.hasProcessParam('install')) {
         });
     });
 }
+
 if (helpers.hasProcessParam('fetch')) {
     fetchEspo({branch: branch}).then(function () {
         console.log('Done');
     });
 }
+
 if (helpers.hasProcessParam('copy')) {
     copyExtension().then(function () {
         setOwner().then(function () {
@@ -55,11 +65,13 @@ if (helpers.hasProcessParam('after-install')) {
         console.log('Done');
     });
 }
+
 if (helpers.hasProcessParam('extension')) {
     buildExtension().then(function () {
         console.log('Done');
     });
 }
+
 if (helpers.hasProcessParam('rebuild')) {
     rebuild().then(function () {
         console.log('Done');
@@ -116,8 +128,8 @@ function fetchEspo (params) {
                             fail();
                         });
                 });
-
-        } else {
+        }
+        else {
             // var command = "git archive --remote=\""+repository+"\" --output=\"./site/archive.zip\" " + branch;
         }
     });
@@ -128,6 +140,7 @@ function install () {
         console.log('Installing EspoCRM instance...');
 
         console.log('  Creating config...');
+
         createConfig();
 
         buildEspo();
@@ -137,10 +150,12 @@ function install () {
         }
 
         console.log('  Install: step1...');
+
         cp.execSync("php install/cli.php -a step1 -d \"user-lang=" + config.install.language + "\"",
             {cwd: './site'});
 
         console.log('  Install: setupConfirmation...');
+
         cp.execSync(
             "php install/cli.php -a setupConfirmation -d \"host-name=" + config.database.host +
             "&db-name=" + config.database.dbname +
@@ -150,9 +165,11 @@ function install () {
         );
 
         console.log('  Install: checkPermission...');
+
         cp.execSync("php install/cli.php -a \"checkPermission\"", {cwd: './site', stdio: 'ignore'});
 
         console.log('  Install: saveSettings...');
+
         cp.execSync(
             "php install/cli.php -a saveSettings -d \"site-url=" + config.install.siteUrl +
             "&default-permissions-user=" + config.install.defaultOwner +
@@ -161,18 +178,22 @@ function install () {
         );
 
         console.log('  Install: buildDatabase...');
+
         cp.execSync("php install/cli.php -a \"buildDatabase\"", {cwd: './site', stdio: 'ignore'});
 
         console.log('  Install: createUser...');
+
         cp.execSync("php install/cli.php -a createUser -d \"user-name=" + config.install.adminUsername +
             '&user-pass=' + config.install.adminPassword + "\"",
             {cwd: './site'}
         );
 
         console.log('  Install: finish...');
+
         cp.execSync("php install/cli.php -a \"finish\"", {cwd: './site'});
 
         console.log('  Merge configs...');
+
         cp.execSync("php merge_configs.php", {cwd: './php_scripts'});
 
         resolve();
@@ -181,9 +202,11 @@ function install () {
 
 function buildEspo () {
     console.log('  Npm install...');
+
     cp.execSync("npm install", {cwd: './site', stdio: 'ignore'});
 
     console.log('  Building...');
+
     cp.execSync("grunt", {cwd: './site', stdio: 'ignore'});
 }
 
@@ -222,25 +245,30 @@ function copyExtension () {
 
         if (fs.existsSync('./site/application/Espo/Modules/' + moduleName)) {
             console.log('  Removing backend files...');
+
             helpers.deleteDirRecursively('./site/application/Espo/Modules/' + moduleName);
         }
 
         if (fs.existsSync('./site/client/modules/' + moduleNameHyphen)) {
             console.log('  Removing frontend files...');
+
             helpers.deleteDirRecursively('./site/client/modules/' + moduleNameHyphen);
         }
 
         if (fs.existsSync('./site/tests/unit/Espo/Modules/' + moduleName)) {
             console.log('  Removing unit test files...');
+
             helpers.deleteDirRecursively('./site/tests/unit/Espo/Modules/' + moduleName);
         }
 
         if (fs.existsSync('./site/tests/integration/Espo/Modules/' + moduleName)) {
             console.log('  Removing integration test files...');
+
             helpers.deleteDirRecursively('./site/tests/integration/Espo/Modules/' + moduleName);
         }
 
         console.log('  Copying files...');
+
         fs.copySync('./src/files', './site/');
         fs.copySync('./tests', './site/tests');
 
@@ -251,7 +279,9 @@ function copyExtension () {
 function rebuild () {
     return new Promise(function (resolve) {
         console.log('Rebuilding EspoCRM instance...');
+
         cp.execSync("php rebuild.php", {cwd: './site'});
+
         resolve();
     });
 }
@@ -259,6 +289,7 @@ function rebuild () {
 function afterInstall () {
     return new Promise(function (resolve) {
         console.log('Running after-install script...');
+
         cp.execSync("php after_install.php", {cwd: './php_scripts'});
 
         resolve();
@@ -283,7 +314,6 @@ function buildExtension () {
             version: package.version,
             skipBackup: true,
             releaseDate: (new Date()).toISOString().split('T')[0],
-
         };
 
         var packageFileName = moduleNameHyphen + '-' + package.version + '.zip';
@@ -291,9 +321,11 @@ function buildExtension () {
         if (!fs.existsSync('./build')) {
             fs.mkdirSync('./build');
         }
+
         if (fs.existsSync('./build/tmp')) {
             helpers.deleteDirRecursively('./build/tmp');
         }
+
         if (fs.existsSync('./build/' + packageFileName)) {
             fs.unlinkSync('./build/' + packageFileName);
         }
@@ -308,9 +340,12 @@ function buildExtension () {
         const archive = archiver('zip');
 
         var zipOutput = fs.createWriteStream('./build/' + packageFileName);
+
         zipOutput.on('close', function () {
             console.log('Package has been built.');
+
             helpers.deleteDirRecursively('./build/tmp');
+
             resolve();
         });
 
@@ -319,8 +354,7 @@ function buildExtension () {
         archive.directory('./build/tmp', '').pipe(zipOutput);
 
         archive.finalize();
-
-    })
+    });
 }
 
 function installExtensions () {
@@ -328,6 +362,7 @@ function installExtensions () {
 
         if (!fs.existsSync('./extensions')) {
             resolve();
+
             return;
         }
 
@@ -340,20 +375,31 @@ function installExtensions () {
 
             console.log('  Install: ' + file);
 
-            cp.execSync("php command.php extension --file=\"../extensions/" + file + "\"", {cwd: './site', stdio: 'ignore'});
+            cp.execSync(
+                "php command.php extension --file=\"../extensions/" + file + "\"",
+                {
+                    cwd: './site',
+                    stdio: 'ignore',
+                }
+            );
         });
 
         resolve();
-
     });
 }
 
 function setOwner () {
     return new Promise(function (resolve) {
         try {
-            cp.execSync("chown -R " + config.install.defaultOwner + ":" + config.install.defaultGroup + " .",
-                {cwd: './site', stdio: 'ignore'});
-        } catch (e) {}
+            cp.execSync(
+                "chown -R " + config.install.defaultOwner + ":" + config.install.defaultGroup + " .",
+                {
+                    cwd: './site',
+                    stdio: 'ignore',
+                }
+            );
+        }
+        catch (e) {}
 
         resolve();
     });
