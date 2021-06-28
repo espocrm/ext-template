@@ -181,7 +181,7 @@ return [
         'driver' => 'pdo_mysql',
         'host' => 'localhost',
         'charset' => 'utf8mb4',
-        'dbname' => 'TEST_DB_NAME',       
+        'dbname' => 'TEST_DB_NAME',
         'user' => 'YOUR_DB_USER',
         'password' => 'YOUR_DB_PASSWORD',
     ],
