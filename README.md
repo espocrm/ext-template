@@ -207,4 +207,4 @@ You need to set the following paths to be ignored in your IDE:
 
 ## License
 
-Change a license in `LICENSE.txt` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
+Change a license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
