@@ -26,7 +26,9 @@ Parameters:
 * espocrm.repository - from what repository to fetch EspoCRM;
 * espocrm.branch - what branch to fetch (`stable` is set by default); you can specify version number instead (e.g. `5.9.2`);
 * database - credentials of the dev database;
-* install.siteUrl - site url of the dev instance.
+* install.siteUrl - site url of the dev instance;
+* install.defaultOwner - a webserver owner (important to be set right);
+* install.defaultGroup - a webserver group (important to be set right).
 
 
 ## Config for EspoCRM instance
