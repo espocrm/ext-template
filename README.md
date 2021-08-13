@@ -143,6 +143,15 @@ You can block out new entity types right in Espo (using Entity Manager) and then
 
 You can remove `copy-custom.js` from the repository if you don't plan to use it future.
 
+## Using composer in extension
+
+If your extension requires to use additional libraries, they can be installed by the composer:
+
+1. Create a file `src/files/application/Modules/{ModuleName}/composer.json` with your dependencies.
+2. Once you run `node build --all` or `node build --copy`, composer dependencies will be automatically installed.
+
+Note: the extension build will contain only the `vendor` directory without `composer.json` file.
+
 ## Versioning
 
 The version number is stored in `package.json` and `package-lock.json`.

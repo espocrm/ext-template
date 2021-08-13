@@ -272,6 +272,10 @@ function copyExtension () {
         fs.copySync('./src/files', './site/');
         fs.copySync('./tests', './site/tests');
 
+        if (!fs.existsSync('./site/application/Espo/Modules/' + moduleName + '/vendor')) {
+            internalComposerInstall('./site/application/Espo/Modules/' + moduleName);
+        }
+
         resolve();
     });
 }
@@ -333,6 +337,8 @@ function buildExtension () {
         fs.mkdirSync('./build/tmp');
 
         fs.copySync('./src', './build/tmp');
+
+        internalComposerBuildExtension();
 
         fs.writeFileSync('./build/tmp/manifest.json', JSON.stringify(manifest, null, 4));
 
@@ -402,5 +408,42 @@ function setOwner () {
         catch (e) {}
 
         resolve();
+    });
+}
+
+function internalComposerInstall (modulePath) {
+    if (!fs.existsSync(modulePath + '/composer.json')) {
+
+        return;
+    }
+
+    console.log('  Running internal composer: install...');
+
+    cp.execSync(
+        "composer install --no-dev --ignore-platform-reqs",
+        {
+            cwd: modulePath,
+            stdio: 'ignore'
+        }
+    );
+}
+
+function internalComposerBuildExtension() {
+    var moduleName = extensionParams.module;
+
+    if (!fs.existsSync('./build/tmp/files/application/Espo/Modules/' + moduleName + '/vendor')) {
+        internalComposerInstall('./build/tmp/files/application/Espo/Modules/' + moduleName);
+    }
+
+    var removedFileList = [
+        'files/application/Espo/Modules/' + moduleName + '/composer.json',
+        'files/application/Espo/Modules/' + moduleName + '/composer.lock',
+        'files/application/Espo/Modules/' + moduleName + '/composer.phar',
+    ];
+
+    removedFileList.forEach(function (file) {
+        if (fs.existsSync('./build/tmp/' + file)) {
+            fs.unlinkSync('./build/tmp/' + file);
+        }
     });
 }
