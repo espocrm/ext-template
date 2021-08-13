@@ -24,13 +24,13 @@ if (helpers.hasProcessParam('all')) {
         () => copyExtension()
     )
     .then(
+        () => composerInstall()
+    )
+    .then(
         () => rebuild()
     )
     .then(
         () => afterInstall()
-    )
-    .then(
-        () => actionComposerInstall()
     )
     .then(
         () => setOwner()
@@ -82,7 +82,7 @@ if (helpers.hasProcessParam('rebuild')) {
 }
 
 if (helpers.hasProcessParam('composer-install')) {
-    actionComposerInstall().then(function () {
+    composerInstall().then(function () {
         console.log('Done');
     });
 }
@@ -339,7 +339,7 @@ function buildExtension () {
 
         fs.copySync('./src', './build/tmp');
 
-        composerBuildExtension();
+        internalComposerBuildExtension();
 
         fs.writeFileSync('./build/tmp/manifest.json', JSON.stringify(manifest, null, 4));
 
@@ -412,17 +412,17 @@ function setOwner () {
     });
 }
 
-function actionComposerInstall () {
+function composerInstall () {
     return new Promise(function (resolve, fail) {
         var moduleName = extensionParams.module;
 
-        composerInstall('./site/application/Espo/Modules/' + moduleName);
+        internalComposerInstall('./site/application/Espo/Modules/' + moduleName);
 
         resolve();
     });
 }
 
-function composerInstall (modulePath) {
+function internalComposerInstall (modulePath) {
     if (!fs.existsSync(modulePath + '/composer.json')) {
 
         return;
@@ -439,10 +439,10 @@ function composerInstall (modulePath) {
     );
 }
 
-function composerBuildExtension() {
+function internalComposerBuildExtension() {
     var moduleName = extensionParams.module;
 
-    composerInstall('./build/tmp/files/application/Espo/Modules/' + moduleName);
+    internalComposerInstall('./build/tmp/files/application/Espo/Modules/' + moduleName);
 
     var removedFileList = [
         'files/application/Espo/Modules/' + moduleName + '/composer.json',
