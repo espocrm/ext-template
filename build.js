@@ -24,6 +24,9 @@ if (helpers.hasProcessParam('all')) {
         () => copyExtension()
     )
     .then(
+        () => composerInstall()
+    )
+    .then(
         () => rebuild()
     )
     .then(
@@ -74,6 +77,12 @@ if (helpers.hasProcessParam('extension')) {
 
 if (helpers.hasProcessParam('rebuild')) {
     rebuild().then(function () {
+        console.log('Done');
+    });
+}
+
+if (helpers.hasProcessParam('composer-install')) {
+    composerInstall().then(function () {
         console.log('Done');
     });
 }
@@ -232,10 +241,6 @@ function createConfig () {
     fs.writeFileSync('./site/data/config.php', configString);
 }
 
-function composerInstall () {
-    cp.execSync("composer install --no-dev --ignore-platform-reqs", {cwd: './site', stdio: 'ignore'});
-}
-
 function copyExtension () {
     return new Promise(function (resolve, fail) {
         console.log('Copying extension to EspoCRM instance...');
@@ -334,6 +339,8 @@ function buildExtension () {
 
         fs.copySync('./src', './build/tmp');
 
+        internalComposerBuildExtension();
+
         fs.writeFileSync('./build/tmp/manifest.json', JSON.stringify(manifest, null, 4));
 
         const archiver = require('archiver');
@@ -402,5 +409,50 @@ function setOwner () {
         catch (e) {}
 
         resolve();
+    });
+}
+
+function composerInstall () {
+    return new Promise(function (resolve, fail) {
+        var moduleName = extensionParams.module;
+
+        internalComposerInstall('./site/application/Espo/Modules/' + moduleName);
+
+        resolve();
+    });
+}
+
+function internalComposerInstall (modulePath) {
+    if (!fs.existsSync(modulePath + '/composer.json')) {
+
+        return;
+    }
+
+    console.log('Running composer install...');
+
+    cp.execSync(
+        "composer install --no-dev --ignore-platform-reqs",
+        {
+            cwd: modulePath,
+            stdio: 'ignore'
+        }
+    );
+}
+
+function internalComposerBuildExtension() {
+    var moduleName = extensionParams.module;
+
+    internalComposerInstall('./build/tmp/files/application/Espo/Modules/' + moduleName);
+
+    var removedFileList = [
+        'files/application/Espo/Modules/' + moduleName + '/composer.json',
+        'files/application/Espo/Modules/' + moduleName + '/composer.lock',
+        'files/application/Espo/Modules/' + moduleName + '/composer.phar',
+    ];
+
+    removedFileList.forEach(file => {
+        if (fs.existsSync('./build/tmp/' + file)) {
+            fs.unlinkSync('./build/tmp/' + file);
+        }
     });
 }
