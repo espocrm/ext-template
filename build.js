@@ -129,7 +129,7 @@ function fetchEspo (params) {
                         ).on('close', function () {
                             fs.unlinkSync('./site/archive.zip');
 
-                            helpers.moveDir('./site/espocrm-' + branch, './site').then(function () {
+                            helpers.moveDir('./site/espocrm-' + branch.replace('/', '-'), './site').then(function () {
                                 resolve();
                             });
                         }).on('error', function () {
