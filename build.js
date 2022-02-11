@@ -212,7 +212,7 @@ function install () {
 function buildEspo () {
     console.log('  Npm install...');
 
-    cp.execSync("npm install", {cwd: './site', stdio: 'ignore'});
+    cp.execSync("npm ci", {cwd: './site', stdio: 'ignore'});
 
     console.log('  Building...');
 
