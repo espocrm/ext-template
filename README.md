@@ -158,7 +158,7 @@ The `autoload.json` file defines paths for namespaces:
 ```json
 {
     "psr-4": {
-        "LibraryNamespace\\": "application/Espo/Modules/Voip/vendor/<vendor_name>/<library_name>/path/to/src"
+        "LibraryNamespace\\": "application/Espo/Modules/{ModuleName}/vendor/<vendor-name>/<library-name>/path/to/src"
     }
 }
 ```
