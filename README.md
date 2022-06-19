@@ -149,8 +149,19 @@ If your extension requires to use additional libraries, they can be installed by
 
 1. Create a file `src/files/application/Modules/{ModuleName}/composer.json` with your dependencies.
 2. Once you run `node build --all` or `node build --composer-install`, composer dependencies will be automatically installed.
+3. Create a file `src/files/application/Modules/{ModuleName}/Resources/autoload.json`.
 
 Note: the extension build will contain only the `vendor` directory without `composer.json` file.
+
+The `autoload.json` file defines paths for namespaces:
+
+```json
+{
+    "psr-4": {
+        "LibraryNamespace\\": "application/Espo/Modules/Voip/vendor/<vendor_name>/<library_name>/path/to/src"
+    }
+}
+```
 
 ## Versioning
 
