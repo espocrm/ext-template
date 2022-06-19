@@ -128,7 +128,7 @@ Extensions will be installed automatically after running the command `node build
 2. Run `node build --copy`.
 3. Test changes in EspoCRM instance at `site` dir.
 
-## Blocking out extension in Espo
+## Using entity manager to create entities
 
 You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
 
