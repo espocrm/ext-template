@@ -133,7 +133,7 @@ Extensions will be installed automatically after running the command `node build
 You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
 
 1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
-2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/application/Modules/{ModuleName}` and apply needed modifications to files.
+2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/application/Espo/Modules/{ModuleName}` and apply needed modifications to files.
 3. Remove files from `site/custom`.
 4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/application/Espo/Modules/{ModuleName}` dir).
 5. Clear cache in Espo.
@@ -147,9 +147,9 @@ You can remove `copy-custom.js` from the repository if you don't plan to use it 
 
 If your extension requires to use additional libraries, they can be installed by the composer:
 
-1. Create a file `src/files/application/Modules/{ModuleName}/composer.json` with your dependencies.
+1. Create a file `src/files/application/Espo/Modules/{ModuleName}/composer.json` with your dependencies.
 2. Once you run `node build --all` or `node build --composer-install`, composer dependencies will be automatically installed.
-3. Create a file `src/files/application/Modules/{ModuleName}/Resources/autoload.json`.
+3. Create a file `src/files/application/Espo/Modules/{ModuleName}/Resources/autoload.json`.
 
 Note: the extension build will contain only the `vendor` directory without `composer.json` file.
 
