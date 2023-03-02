@@ -191,12 +191,18 @@ function buildEspo () {
 function createConfig () {
     const config = helpers.loadConfig();
 
+    let charset = config.database.charset ?
+        "'" + config.database.charset + "'" : 'null';
+
+    let port = config.database.port ?
+        config.database.port : 'null';
+
     let configString = `<?php
         return [
             'database' => [
                 'host' => '${config.database.host}',
-                'port' => '${config.database.port}',
-                'charset' => '${config.database.charset}',
+                'port' => ${port},
+                'charset' => ${charset},
                 'dbname' => '${config.database.dbname}',
                 'user' => '${config.database.user}',
                 'password' => '${config.database.password}',
