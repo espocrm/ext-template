@@ -4,10 +4,8 @@
         "branch": "stable"
     },
     "database": {
-        "driver": "pdo_mysql",
         "host": "localhost",
-        "port": "",
-        "charset": "utf8mb4",
+        "port": null,
         "dbname": "ext-{@nameHyphen}",
         "user": "root",
         "password": ""

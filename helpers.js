@@ -1,24 +1,28 @@
 const fs = require('fs-extra');
+const exec = require('child_process').exec;
+const path = require('path');
 
-var exec = require('child_process').exec;
-
-var path = require('path');
-
-var isObject = function (item) {
+const isObject = function (item) {
     return (item && typeof item === 'object' && !Array.isArray(item));
 };
 
-var mergeDeep = function (target, ...sources) {
-    if (!sources.length) return target;
+const mergeDeep = function (target, ...sources) {
+    if (!sources.length) {
+        return target;
+    }
+
     const source = sources.shift();
 
     if (isObject(target) && isObject(source)) {
         for (const key in source) {
-        if (isObject(source[key])) {
-            if (!target[key]) Object.assign(target, { [key]: {} });
+            if (isObject(source[key])) {
+                if (!target[key]) {
+                    Object.assign(target, {[key]: {}});
+                }
+
                 mergeDeep(target[key], source[key]);
             } else {
-                Object.assign(target, { [key]: source[key] });
+                Object.assign(target, {[key]: source[key]});
             }
         }
     }
@@ -26,9 +30,9 @@ var mergeDeep = function (target, ...sources) {
     return mergeDeep(target, ...sources);
 };
 
-exports.loadConfig = function () {
+exports.loadConfig = () => {
     const configDefault = require('./config-default.json');
-    var config = {};
+    let config;
 
     if (fs.existsSync('./config.json')) {
         config = {};
@@ -40,86 +44,94 @@ exports.loadConfig = function () {
     return config;
 }
 
-var execute = function (command, callback) {
-    exec(command, function(error, stdout, stderr) {
+const execute = (command, callback) => {
+    exec(command, (error, stdout, stderr) => {
         callback(stdout);
     });
 };
 
 exports.execute = execute;
 
-var deleteDirRecursively = function (path) {
+const deleteDirRecursively = path => {
     if (fs.existsSync(path) && fs.lstatSync(path).isDirectory()) {
-        fs.readdirSync(path).forEach(function(file, index) {
-            var curPath = path + "/" + file;
+        fs.readdirSync(path).forEach(file => {
+            const curPath = path + "/" + file;
+
             if (fs.lstatSync(curPath).isDirectory()) {
                 deleteDirRecursively(curPath);
-            } else {
-                fs.unlinkSync(curPath);
+
+                return;
             }
+
+            fs.unlinkSync(curPath);
         });
+
         fs.rmdirSync(path);
-    } else if (fs.existsSync(path) && fs.lstatSync(path).isFile()) {
+
+        return;
+    }
+
+    if (fs.existsSync(path) && fs.lstatSync(path).isFile()) {
         fs.unlinkSync(path);
     }
 };
 
 exports.deleteDirRecursively = deleteDirRecursively;
 
+const promiseAllWait = promises => {
+    let all_promises = [];
 
-var promiseAllWait = function (promises) {
-    var all_promises = [];
-    for(var i_promise=0; i_promise < promises.length; i_promise++) {
+    for (let i_promise = 0; i_promise < promises.length; i_promise++) {
         all_promises.push(
             promises[i_promise]
-            .then(function(res) {
-                return { res: res };
-            }).catch(function(err) {
-                return { err: err };
-            })
+                .then(res => ({res: res}))
+                .catch(err => ({err: err}))
         );
     }
 
     return Promise.all(all_promises)
-    .then(function(results) {
-        return new Promise(function(resolve, reject) {
-            var is_failure = false;
-            var i_result;
-            for(i_result=0; i_result < results.length; i_result++) {
-                if (results[i_result].err) {
-                    is_failure = true;
-                    break;
-                } else {
-                    results[i_result] = results[i_result].res;
+        .then(results => {
+            return new Promise((resolve, reject) => {
+                let is_failure = false;
+
+                let i_result;
+
+                for (i_result = 0; i_result < results.length; i_result++) {
+                    if (results[i_result].err) {
+                        is_failure = true;
+
+                        break;
+                    } else {
+                        results[i_result] = results[i_result].res;
+                    }
                 }
-            }
 
-            if (is_failure) {
-                reject( results[i_result].err );
-            } else {
-                resolve(results);
-            }
+                if (is_failure) {
+                    reject(results[i_result].err);
+                } else {
+                    resolve(results);
+                }
+            });
         });
-    });
 };
 
-var movePromiser = function(from, to, records) {
+const movePromiser = (from, to, records) => {
     return fs.move(from, to)
-    .then(function() {
-        records.push( {from: from, to: to} );
-    });
+        .then(() => {
+            records.push({from: from, to: to});
+        });
 };
 
-exports.moveDir = function(from_dir, to_dir) {
-    return fs.readdir(from_dir)
-    .then(function(children) {
-        return fs.ensureDir(to_dir)
-        .then(function() {
-            var move_promises = [];
-            var moved_records = [];
-            var child;
-            for(var i_child=0; i_child < children.length; i_child++) {
+exports.moveDir = (from_dir, to_dir) => fs.readdir(from_dir)
+    .then(children => fs.ensureDir(to_dir)
+        .then(() => {
+            let move_promises = [];
+            let moved_records = [];
+            let child;
+
+            for (let i_child = 0; i_child < children.length; i_child++) {
                 child = children[i_child];
+
                 move_promises.push(movePromiser(
                     path.join(from_dir, child),
                     path.join(to_dir, child),
@@ -128,38 +140,42 @@ exports.moveDir = function(from_dir, to_dir) {
             }
 
             return promiseAllWait(move_promises)
-            .catch(function(err) {
-                var undo_move_promises = [];
-                for(var i_moved_record=0; i_moved_record < moved_records.length; i_moved_record++) {
-                    undo_move_promises.push( fs.move(moved_records[i_moved_record].to, moved_records[i_moved_record].from) );
-                }
+                .catch(err => {
+                    let undo_move_promises = [];
 
-                return promiseAllWait(undo_move_promises)
-                .then(function() {
-                    throw err;
+                    for (let i_moved_record = 0; i_moved_record < moved_records.length; i_moved_record++) {
+                        undo_move_promises
+                            .push(fs.move(moved_records[i_moved_record].to, moved_records[i_moved_record].from));
+                    }
+
+                    return promiseAllWait(undo_move_promises)
+                        .then(() => {
+                            throw err;
+                        });
                 });
-            });
-        }).then(function() {
-            return fs.rmdir(from_dir);
-        });
-    });
-};
+        })
+        .then(() => fs.rmdir(from_dir)));
 
-exports.getProcessParam = function (name) {
-    var value = null;
-    process.argv.forEach(function (item) {
+exports.getProcessParam = name => {
+    let value = null;
+
+    process.argv.forEach(item => {
         if (item.indexOf('--'+name+'=') === 0) {
             value = item.split('=')[1];
         }
     });
+
     return value;
 }
 
 exports.camelCaseToHyphen = (string => string.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase());
 
-exports.hasProcessParam = function (param) {
-    for (var i in process.argv) {
-        if (process.argv[i] === '--' + param) return true;
+exports.hasProcessParam = param => {
+    for (let i in process.argv) {
+        if (process.argv[i] === '--' + param) {
+            return true;
+        }
     }
+
     return false;
 }

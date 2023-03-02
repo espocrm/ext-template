@@ -42,8 +42,8 @@ $replacePlaceholders('extension.json');
 $replacePlaceholders('config-default.json');
 $replacePlaceholders('README.md');
 
-rename('src/files/application/Espo/Modules/MyModuleName', 'src/files/application/Espo/Modules/'. $name);
-rename('src/files/client/modules/my-module-name', 'src/files/client/modules/'. $nameHyphen);
+rename('src/files/custom/Espo/Modules/MyModuleName', 'src/files/custom/Espo/Modules/'. $name);
+rename('src/files/client/custom/modules/my-module-name', 'src/files/client/custom/modules/'. $nameHyphen);
 
 rename('tests/unit/Espo/Modules/MyModuleName', 'tests/unit/Espo/Modules/'. $name);
 rename('tests/integration/Espo/Modules/MyModuleName', 'tests/integration/Espo/Modules/'. $name);
