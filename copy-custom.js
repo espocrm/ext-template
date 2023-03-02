@@ -1,25 +1,16 @@
 const fs = require('fs-extra');
-const unzipper = require('unzipper');
-const mv = require('mv');
-const cp = require('child_process');
-var request = require('request');
-
-const helpers = require('./helpers.js');
 const extensionParams = require('./extension.json');
-
-const config = helpers.loadConfig();
 
 copyCustom();
 
 function copyCustom () {
-    var moduleName = extensionParams.module;
-
-    var sourcePath = './site/custom/Espo/Custom/';
-    var distPath = './src/files/custom/Espo/Modules/' + moduleName;
+    const moduleName = extensionParams.module;
+    const sourcePath = './site/custom/Espo/Custom/';
+    const distPath = './src/files/custom/Espo/Modules/' + moduleName;
 
     fs.copySync(sourcePath, distPath);
 
-    var entityTypeList = [];
+    let entityTypeList = [];
 
     if (fs.existsSync(distPath + '/Entities')) {
         fs.readdirSync(distPath + '/Entities').forEach(file => {
@@ -27,28 +18,30 @@ function copyCustom () {
         });
     }
 
-    entityTypeList.forEach(function (eType) {
-        var scopeDefsFile = distPath + '/Resources/metadata/scopes/' + eType + '.json';
-        var defs = require(scopeDefsFile);
+    entityTypeList.forEach(eType => {
+        const scopeDefsFile = distPath + '/Resources/metadata/scopes/' + eType + '.json';
+        const defs = require(scopeDefsFile);
+
         defs['module'] = moduleName;
         fs.writeFileSync(scopeDefsFile, JSON.stringify(defs, null, '    '));
 
+        ['Controllers', 'Entities', 'Repositories', 'SelectManagers', 'Services'].forEach(item => {
+            let file = distPath + '/' + item + '/' + eType + '.php';
 
-        var controllerFile = distPath + '/Controller/' + eType + '.php';
+            if (!fs.existsSync(file)) {
+                return;
+            }
 
-        ['Controllers', 'Entities', 'Repositories', 'SelectManagers', 'Services'].forEach(function (item) {
-            var file = distPath + '/'+item+'/' + eType + '.php';
-            if (!fs.existsSync(file)) return;
+            let contents = fs.readFileSync(file).toString();
 
-            var contents = fs.readFileSync(file).toString();
-
-            contents = contents.replace(new RegExp('namespace Espo\\\\Custom', 'g'), 'namespace Espo\\Modules\\' + moduleName);
+            contents = contents
+                .replace(new RegExp('namespace Espo\\\\Custom', 'g'), 'namespace Espo\\Modules\\' + moduleName);
 
             fs.writeFileSync(file, contents);
-        }, this);
-
-    }, this);
+        });
+    });
 
     console.log(
-        "Done.\nCustom files were copied from 'site' to 'src'. Now you can remove files from 'site/custom' and commit changes.");
+        "Done.\nCustom files were copied from 'site' to 'src'. " +
+        "Now you can remove files from 'site/custom' and commit changes.");
 }
