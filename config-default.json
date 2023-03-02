@@ -6,6 +6,7 @@
     "database": {
         "host": "localhost",
         "port": null,
+        "charset": null,
         "dbname": "ext-{@nameHyphen}",
         "user": "root",
         "password": ""

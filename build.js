@@ -194,7 +194,6 @@ function createConfig () {
     let configString = `<?php
         return [
             'database' => [
-                'driver' => '${config.database.driver}',
                 'host' => '${config.database.host}',
                 'port' => '${config.database.port}',
                 'charset' => '${config.database.charset}',
