@@ -1,5 +1,7 @@
 *
 !.gitignore
-!codeStyles/*
-!fileTemplates/*
-!inspectionProfiles/*
+!/codeStyles
+!/fileTemplates
+!/inspectionProfiles
+!misc.xml
+!/jsonSchemas.xml

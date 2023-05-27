@@ -1,0 +1,422 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "*/Resources/routes.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/routes.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/module.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/routes.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/layouts/*/detail.json",
+                "*/Resources/layouts/*/detailSmall.json",
+                "*/Resources/layouts/*/detailConvert.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/layouts/detail.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/layouts/*/list.json",
+                "*/Resources/layouts/*/listSmall.json",
+                "*/Resources/layouts/*/listFor*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/layouts/list.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/aclDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/aclDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/authenticationMethods/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/authenticationMethods.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/clientDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/clientDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/dashlets/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/dashlets.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata//*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/entityAcl/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/entityAcl.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/entityDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/entityDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/fields/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/fields.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/integrations/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/integrations.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/notificationDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/notificationDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/pdfDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/pdfDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/recordDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/recordDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/scopes/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/scopes.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/selectDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/selectDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/metadata/streamDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/streamDefs.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/acl.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/acl.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/aclPortal.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/aclPortal.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/actions.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/actions.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/addressFormats.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/addressFormats.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/adminPanel.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/adminPanel.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/api.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/api.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/appParams.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/appParams.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/authentication.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/authentication.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/authentication2FAMethods.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/authentication2FAMethods.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/cleanup.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/cleanup.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/client.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/client.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/clientRoutes.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/clientRoutes.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/complexExpression.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/complexExpression.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/config.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/config.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/consoleCommands.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/consoleCommands.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/containerServices.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/containerServices.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/currency.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/currency.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/currencyConversion.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/currencyConversion.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/databasePlatforms.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/databasePlatforms.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/dateTime.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/dateTime.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/defaultDashboardLayouts.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/defaultDashboardLayouts.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/defaultDashboardOptions.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/defaultDashboardOptions.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/entityManagerParams.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entityManagerParams.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/entityTemplateList.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entityTemplateList.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/export.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/export.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/fieldProcessing.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/fieldProcessing.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/file.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/file.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/fileStorage.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/fileStorage.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/formula.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/formula.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/hook.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/hook.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/image.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/image.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/jsLibs.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/jsLibs.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/language.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/language.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/linkManager.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/linkManager.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/massActions.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/massActions.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/metadata.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/metadata.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/orm.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/orm.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/pdfEngines.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/pdfEngines.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/popupNotifications.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/popupNotifications.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/portalContainerServices.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/portalContainerServices.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/rebuild.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/rebuild.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/recordId.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/recordId.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/regExpPatterns.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/regExpPatterns.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/relationships.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/relationships.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/scheduledJobs.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/scheduledJobs.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/select.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/select.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/smsProviders.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/smsProviders.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/templateHelpers.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/templateHelpers.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/templates.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/templates.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/webSocket.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/webSocket.json"
+        }
+    ]
+}
