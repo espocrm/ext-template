@@ -223,7 +223,8 @@ You need to set the following paths to be ignored in your IDE:
 
 * `build`
 * `site/build`
-* `site/application/Espo/Modules/{@name}`
+* `site/custom/`
+* `site/client/custom/`
 * `site/tests/unit/Espo/Modules/{@name}`
 * `site/tests/integration/Espo/Modules/{@name}`
 
