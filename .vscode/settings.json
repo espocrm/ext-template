@@ -14,6 +14,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/autoload.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/autoload.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/layouts/*/detail.json",
                 "*/Resources/layouts/*/detailSmall.json",
                 "*/Resources/layouts/*/detailConvert.json"
