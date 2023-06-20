@@ -1,4 +1,8 @@
-const fs = require('fs-extra');
+import fs from 'fs-extra';
+import {createRequire} from 'module';
+
+const require = createRequire(import.meta.url);
+
 const extensionParams = require('./extension.json');
 
 copyCustom();
@@ -14,7 +18,7 @@ function copyCustom () {
 
     if (fs.existsSync(distPath + '/Entities')) {
         fs.readdirSync(distPath + '/Entities').forEach(file => {
-            entityTypeList.push(file.substr(0, file.length - 4));
+            entityTypeList.push(file.slice(0, file.length - 4));
         });
     }
 
