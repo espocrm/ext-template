@@ -3,6 +3,7 @@
     "name": "{@nameLabel}",
     "description": "{@description}",
     "author": "{@author}",
+    "bundled": false,
     "acceptableVersions": [
         ">=7.3.0"
     ],
