@@ -230,6 +230,13 @@ You need to set the following paths to be ignored in your IDE:
 * `site/tests/unit/Espo/Modules/{@name}`
 * `site/tests/integration/Espo/Modules/{@name}`
 
+## Using ES modules
+
+*As of v7.6.*
+
+1. Set *bundled* to true in `extension.json`.
+2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
+
 ## License
 
 Change a license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
