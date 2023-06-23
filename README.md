@@ -135,9 +135,9 @@ Extensions will be installed automatically after running the command `node build
 You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
 
 1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
-2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/application/Espo/Modules/{ModuleName}` and apply needed modifications to files.
+2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/custom/Espo/Modules/{ModuleName}` and apply needed modifications to files.
 3. Remove files from `site/custom`.
-4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/application/Espo/Modules/{ModuleName}` dir).
+4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/{ModuleName}` dir).
 5. Clear cache in Espo.
 6. Test in Espo.
 7. Commit changes.
@@ -236,6 +236,15 @@ You need to set the following paths to be ignored in your IDE:
 
 1. Set *bundled* to true in `extension.json`.
 2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
+3. Add `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/client.json`
+   ```json
+   {
+       "scriptList": [
+           "__APPEND__",
+          "client/custom/modules/{@nameHyphen}/lib/init.js"
+       ]
+   }
+   ```
 
 ## License
 
