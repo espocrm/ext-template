@@ -237,14 +237,14 @@ You need to set the following paths to be ignored in your IDE:
 1. Set *bundled* to true in `extension.json`.
 2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
 3. Add `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/client.json`
-   ```json
-   {
-       "scriptList": [
-           "__APPEND__",
-          "client/custom/modules/{@nameHyphen}/lib/init.js"
-       ]
-   }
-   ```
+    ```json
+    {
+        "scriptList": [
+            "__APPEND__",
+            "client/custom/modules/{@nameHyphen}/lib/init.js"
+        ]
+    }
+    ```
 
 ## License
 
