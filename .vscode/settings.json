@@ -270,6 +270,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/entityTemplates.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entityTemplates.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/export.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/export.json"
