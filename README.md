@@ -232,7 +232,7 @@ You need to set the following paths to be ignored in your IDE:
 
 ## Using ES modules
 
-*As of v7.6.*
+*As of v8.0.*
 
 1. Set *bundled* to true in `extension.json`.
 2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
