@@ -258,6 +258,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/entityManager.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entityManager.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/entityManagerParams.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entityManagerParams.json"
