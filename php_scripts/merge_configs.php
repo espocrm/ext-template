@@ -2,17 +2,20 @@
 
 include '../site/bootstrap.php';
 
+use Espo\Core\InjectableFactory;
+use Espo\Core\Utils\Config\ConfigWriter;
+
 $app = new \Espo\Core\Application();
 $app->setupSystemUser();
 
-$config = $app->getContainer()->get('config');
+$configWriter = $app->getContainer()->getByClass(InjectableFactory::class)->create(ConfigWriter::class);
 
 if (file_exists('../config.php')) {
     $override = include('../config.php');
 
     foreach ($override as $key => $value) {
-        $config->set($key, $value);
+        $configWriter->set($key, $value);
     }
 
-    $config->save();
+    $configWriter->save();
 }
