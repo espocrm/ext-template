@@ -18,5 +18,8 @@
         "siteUrl": "http://localhost/ext-{@nameHyphen}/site",
         "adminUsername": "admin",
         "adminPassword": "1"
+    },
+    "logger": {
+        "level": "DEBUG"
     }
 }
