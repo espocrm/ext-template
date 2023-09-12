@@ -8,7 +8,7 @@
   "type": "module",
   "author": "{@author}",
   "dependencies": {
-    "espo-extension-tools": "github:espocrm/extension-tools#0.0.2"
+    "espo-extension-tools": "github:espocrm/extension-tools#0.0.3"
   },
   "engines": {
     "npm": ">=7",
