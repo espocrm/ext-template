@@ -26,7 +26,7 @@ fclose($fh);
 
 fwrite(\STDOUT, "Do you want to use ES6? [y/n]\n");
 $fh = fopen('php://stdin', 'r');
-$es6 = trim(fgets($fh));
+$es6 = trim(fgets($fh)) === 'y';
 $bundled = $es6 ? "true" : "false";
 $jsTranspiled = $es6 ? "true" : "false";
 fclose($fh);
