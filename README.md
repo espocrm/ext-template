@@ -10,7 +10,7 @@ Run:
 php init.php
 ```
 
-It will ask to enter an extension name and some other information. As of v8.0, `init.php` will ask if you want to use ES6 for frontend code.
+It will ask to enter an extension name and some other information.
 
 After that, you can remove `init.php` file from your respository. Commit changes and proceed to configuration & building.
 
@@ -229,6 +229,24 @@ You need to set the following paths to be ignored in your IDE:
 * `site/client/custom/`
 * `site/tests/unit/Espo/Modules/{@name}`
 * `site/tests/integration/Espo/Modules/{@name}`
+
+## Using ES modules
+
+*As of v8.0.*
+
+The initialization script asks whether you want to use ES6 modules. If you choose "NO", you still can switch to ES6 later:
+
+1. Set *bundled* to true in `extension.json`.
+2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
+3. Add `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/client.json`
+    ```json
+    {
+        "scriptList": [
+            "__APPEND__",
+            "client/custom/modules/{@nameHyphen}/lib/init.js"
+        ]
+    }
+    ```
 
 ## License
 
