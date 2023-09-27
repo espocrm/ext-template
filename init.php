@@ -24,7 +24,7 @@ $fh = fopen('php://stdin', 'r');
 $author = trim(fgets($fh));
 fclose($fh);
 
-fwrite(\STDOUT, "Do you want to use ES6? [y/n]\n");
+fwrite(\STDOUT, "Do you want to use ES6 modules in frontend? [y/n]\n");
 $fh = fopen('php://stdin', 'r');
 $es6 = trim(fgets($fh)) === 'y';
 $bundled = $es6 ? "true" : "false";
