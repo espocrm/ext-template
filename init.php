@@ -52,8 +52,8 @@ $replacePlaceholders('config-default.json');
 $replacePlaceholders('README.md');
 $replacePlaceholders('src/files/custom/Espo/Modules/MyModuleName/Resources/module.json');
 
-if($es6) {
-  $content = <<<CLIENT_JSON
+if ($es6) {
+    $content = <<<CLIENT_JSON
 {
   "scriptList": [
       "__APPEND__",
@@ -61,11 +61,14 @@ if($es6) {
   ]
 }
 CLIENT_JSON;
-  $path = 'src/files/custom/Espo/Modules/MyModuleName/Resources/metadata/app/';
-  mkdir($path, 0755, True);
-  $path .= "client.json";
-  file_put_contents($path, $content);
-  $replacePlaceholders($path);
+    
+    $path = 'src/files/custom/Espo/Modules/MyModuleName/Resources/metadata/app/';
+    mkdir($path, 0755, true);
+    
+    $path .= "client.json";    
+    file_put_contents($path, $content);
+    
+    $replacePlaceholders($path);
 }
 
 rename('src/files/custom/Espo/Modules/MyModuleName', 'src/files/custom/Espo/Modules/'. $name);
