@@ -1,5 +1,5 @@
 {
     "order": 50,
-    "bundled": false,
-    "jsTranspiled": false
+    "bundled": {@bundled},
+    "jsTranspiled": {@jsTranspiled}
 }

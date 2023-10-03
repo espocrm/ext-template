@@ -234,6 +234,8 @@ You need to set the following paths to be ignored in your IDE:
 
 *As of v8.0.*
 
+The initialization script asks whether you want to use ES6 modules. If you choose "NO", you still can switch to ES6 later:
+
 1. Set *bundled* to true in `extension.json`.
 2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
 3. Add `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/client.json`
