@@ -147,20 +147,20 @@ You can remove `copy-custom.js` from the repository if you don't plan to use it 
 
 ## Using composer in extension
 
-If your extension requires to use additional libraries, they can be installed by the composer:
+If your extension requires additional libraries, they can be installed by composer:
 
-1. Create a file `src/files/application/Espo/Modules/{ModuleName}/composer.json` with your dependencies.
+1. Create a file `src/files/custom/Espo/Modules/{ModuleName}/composer.json` with your dependencies.
 2. Once you run `node build --all` or `node build --composer-install`, composer dependencies will be automatically installed.
-3. Create a file `src/files/application/Espo/Modules/{ModuleName}/Resources/autoload.json`.
+3. Create a file `src/files/custom/Espo/Modules/{ModuleName}/Resources/autoload.json`.
 
-Note: the extension build will contain only the `vendor` directory without `composer.json` file.
+Note: The extension build will contain only the `vendor` directory without the `composer.json` file.
 
 The `autoload.json` file defines paths for namespaces:
 
 ```json
 {
     "psr-4": {
-        "LibraryNamespace\\": "application/Espo/Modules/{ModuleName}/vendor/<vendor-name>/<library-name>/path/to/src"
+        "LibraryNamespace\\": "custom/Espo/Modules/{ModuleName}/vendor/<vendor-name>/<library-name>/path/to/src"
     }
 }
 ```
