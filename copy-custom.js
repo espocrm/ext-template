@@ -14,10 +14,10 @@ function copyCustom () {
 
     fs.copySync(sourcePath, distPath);
 
-    let entityTypeList = [];
+    const entityTypeList = [];
 
-    if (fs.existsSync(distPath + '/Entities')) {
-        fs.readdirSync(distPath + '/Entities').forEach(file => {
+    if (fs.existsSync(sourcePath + '/Controllers')) {
+        fs.readdirSync(sourcePath + '/Controllers').forEach(file => {
             entityTypeList.push(file.slice(0, file.length - 4));
         });
     }
@@ -29,8 +29,8 @@ function copyCustom () {
         defs['module'] = moduleName;
         fs.writeFileSync(scopeDefsFile, JSON.stringify(defs, null, '    '));
 
-        ['Controllers', 'Entities', 'Repositories', 'SelectManagers', 'Services'].forEach(item => {
-            let file = distPath + '/' + item + '/' + eType + '.php';
+        ['Controllers', 'Entities', 'Repositories', 'Services'].forEach(item => {
+            const file = distPath + '/' + item + '/' + eType + '.php';
 
             if (!fs.existsSync(file)) {
                 return;
