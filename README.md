@@ -216,7 +216,7 @@ The file should exist before you run `node build --copy`.
 Command to run integration tests:
 
 ```
-site/vendor/bin/phpunit site/tests/integration/Espo/Modules/{@name}
+(cd site && vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
 ## Configuring IDE
