@@ -264,6 +264,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/emailTemplate.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/emailTemplate.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/entityManager.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entityManager.json"
