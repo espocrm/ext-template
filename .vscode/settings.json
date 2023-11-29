@@ -348,6 +348,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/layouts.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/layouts.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/linkManager.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/linkManager.json"
