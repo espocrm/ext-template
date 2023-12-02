@@ -360,6 +360,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/mapPproviders.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/mapPproviders.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/massActions.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/massActions.json"
