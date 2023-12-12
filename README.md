@@ -81,6 +81,8 @@ Command:
 node build --copy
 ```
 
+You can set up a file watcher in your IDE to avoid running this command manually. See below about the file watcher.
+
 ### Running after-install script
 
 AfterInstall.php will be applied for EspoCRM instance.
@@ -229,6 +231,16 @@ You need to set the following paths to be ignored in your IDE:
 * `site/client/custom/`
 * `site/tests/unit/Espo/Modules/{@name}`
 * `site/tests/integration/Espo/Modules/{@name}`
+
+### File watcher
+
+You can set up a file watcher in to automatically copy and transpile files upon saving.
+
+File watcher parameters for PhpStorm:
+
+Program: `node`
+Arguments: `build --copy-file --file=$FilePathRelativeToProjectRoot$`
+Working Directory: `$ProjectFileDir$`
 
 ## Using ES modules
 
