@@ -234,7 +234,7 @@ You need to set the following paths to be ignored in your IDE:
 
 ### File watcher
 
-You can set up a file watcher in to automatically copy and transpile files upon saving.
+You can set up a file watcher in the IDE to automatically copy and transpile files upon saving.
 
 File watcher parameters for PhpStorm:
 
