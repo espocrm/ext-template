@@ -238,9 +238,9 @@ You can set up a file watcher in to automatically copy and transpile files upon 
 
 File watcher parameters for PhpStorm:
 
-Program: `node`
-Arguments: `build --copy-file --file=$FilePathRelativeToProjectRoot$`
-Working Directory: `$ProjectFileDir$`
+* Program: `node`
+* Arguments: `build --copy-file --file=$FilePathRelativeToProjectRoot$`
+* Working Directory: `$ProjectFileDir$`
 
 ## Using ES modules
 
