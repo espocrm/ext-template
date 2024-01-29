@@ -360,9 +360,9 @@
         },
         {
             "fileMatch": [
-                "*/Resources/metadata/app/mapPproviders.json"
+                "*/Resources/metadata/app/mapProviders.json"
             ],
-            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/mapPproviders.json"
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/mapProviders.json"
         },
         {
             "fileMatch": [
