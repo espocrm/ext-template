@@ -10,7 +10,7 @@
             "fileMatch": [
                 "*/Resources/module.json"
             ],
-            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/routes.json"
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/module.json"
         },
         {
             "fileMatch": [
