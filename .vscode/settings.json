@@ -60,12 +60,6 @@
         },
         {
             "fileMatch": [
-                "*/metadata//*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/.json"
-        },
-        {
-            "fileMatch": [
                 "*/metadata/entityAcl/*.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/entityAcl.json"
