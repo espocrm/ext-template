@@ -30,6 +30,18 @@ Parameters:
 * install.defaultOwner - a webserver owner (important to be set right);
 * install.defaultGroup - a webserver group (important to be set right).
 
+Note: The `port` field is not used during the install. Instead, add the port to the host, e.g. "domain.com:3307" if you need to specify a port other than 3306, which is the default. For example, the following configuration in `config-default.json` allows the install process to reach a database at mydomain.com on port 3100:
+```
+    ...
+    "database": {
+        "host": "mydomain.com:3100",
+        "port": "",
+        ...
+    },
+    ...
+```
+The default port is 3306, which does not need to be specified if your database is using port 3306.
+
 
 ## Config for EspoCRM instance
 
@@ -43,6 +55,21 @@ return [
     'useCacheInDeveloperMode' => true,
 ];
 ```
+
+Note: The database port can be overriden in this section by specifying the port in the typical EspoCRM format:
+```
+<?php
+return [
+    ...
+    'database' => [
+      'host' => '127.0.0.2',
+      'port' => '3308',
+    ],
+    ...
+];
+```
+
+In other words, the initial database configuration must use a combined `host:port` format, but the `config.php` override file uses separate fields for `host` and `port`.
 
 ## Building
 
@@ -186,7 +213,7 @@ npm version major
 Command to run unit tests:
 
 ```
-node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/{@name}
+node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/TestExtension
 ```
 
 ### Integration
@@ -218,7 +245,7 @@ The file should exist before you run `node build --copy`.
 Command to run integration tests:
 
 ```
-(cd site && vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
+(cd site && vendor/bin/phpunit tests/integration/Espo/Modules/TestExtension)
 ```
 
 ## Configuring IDE
@@ -229,8 +256,8 @@ You need to set the following paths to be ignored in your IDE:
 * `site/build`
 * `site/custom/`
 * `site/client/custom/`
-* `site/tests/unit/Espo/Modules/{@name}`
-* `site/tests/integration/Espo/Modules/{@name}`
+* `site/tests/unit/Espo/Modules/TestExtension`
+* `site/tests/integration/Espo/Modules/TestExtension`
 
 ### File watcher
 
@@ -249,13 +276,13 @@ File watcher parameters for PhpStorm:
 The initialization script asks whether you want to use ES6 modules. If you choose "NO", you still can switch to ES6 later:
 
 1. Set *bundled* to true in `extension.json`.
-2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
-3. Add `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/client.json`
+2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/TestExtension/Resources/module.json`.
+3. Add `src/files/custom/Espo/Modules/TestExtension/Resources/metadata/app/client.json`
     ```json
     {
         "scriptList": [
             "__APPEND__",
-            "client/custom/modules/{@nameHyphen}/lib/init.js"
+            "client/custom/modules/test-extension/lib/init.js"
         ]
     }
     ```
