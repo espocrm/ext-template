@@ -213,7 +213,7 @@ npm version major
 Command to run unit tests:
 
 ```
-node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/TestExtension
+node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/{@name}
 ```
 
 ### Integration
@@ -245,7 +245,7 @@ The file should exist before you run `node build --copy`.
 Command to run integration tests:
 
 ```
-(cd site && vendor/bin/phpunit tests/integration/Espo/Modules/TestExtension)
+(cd site && vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
 ## Configuring IDE
@@ -256,8 +256,8 @@ You need to set the following paths to be ignored in your IDE:
 * `site/build`
 * `site/custom/`
 * `site/client/custom/`
-* `site/tests/unit/Espo/Modules/TestExtension`
-* `site/tests/integration/Espo/Modules/TestExtension`
+* `site/tests/unit/Espo/Modules/{@name}`
+* `site/tests/integration/Espo/Modules/{@name}`
 
 ### File watcher
 
@@ -276,13 +276,13 @@ File watcher parameters for PhpStorm:
 The initialization script asks whether you want to use ES6 modules. If you choose "NO", you still can switch to ES6 later:
 
 1. Set *bundled* to true in `extension.json`.
-2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/TestExtension/Resources/module.json`.
-3. Add `src/files/custom/Espo/Modules/TestExtension/Resources/metadata/app/client.json`
+2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
+3. Add `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/client.json`
     ```json
     {
         "scriptList": [
             "__APPEND__",
-            "client/custom/modules/test-extension/lib/init.js"
+            "client/custom/modules/{@nameHyphen}/lib/init.js"
         ]
     }
     ```
