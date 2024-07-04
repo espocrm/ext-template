@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-        "baseUrl": "src/files/client",
         "paths": {
-            "modules/{@nameHyphen}/*": ["custom/modules/{@nameHyphen}/src/*"]
+            "*": ["site/client/src/*"],
+            "modules/crm/*": ["site/client/modules/crm/src/*"],
+            "modules/{@nameHyphen}/*": ["src/files/client/custom/modules/{@nameHyphen}/src/*"]
         },
         "module": "ES6",
         "target": "ES2018"
