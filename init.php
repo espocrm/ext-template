@@ -48,6 +48,7 @@ $replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLab
 
 $replacePlaceholders('package.json');
 $replacePlaceholders('extension.json');
+$replacePlaceholders('jsconfig.json');
 $replacePlaceholders('config-default.json');
 $replacePlaceholders('README.md');
 $replacePlaceholders('src/files/custom/Espo/Modules/MyModuleName/Resources/module.json');
@@ -61,13 +62,13 @@ if ($es6) {
   ]
 }
 CLIENT_JSON;
-    
+
     $path = 'src/files/custom/Espo/Modules/MyModuleName/Resources/metadata/app/';
     mkdir($path, 0755, true);
-    
-    $path .= "client.json";    
+
+    $path .= "client.json";
     file_put_contents($path, $content);
-    
+
     $replacePlaceholders($path);
 }
 

@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src/files/client",
+        "paths": {
+            "modules/{@nameHyphen}/*": ["custom/modules/{@nameHyphen}/src/*"]
+        },
+        "module": "ES6",
+        "target": "ES2018"
+    }
+}
