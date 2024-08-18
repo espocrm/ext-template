@@ -183,6 +183,12 @@ npm version major
 
 ### Unit
 
+Run composer install:
+
+```
+`(cd site; composer install)`
+```
+
 Command to run unit tests:
 
 ```
@@ -194,8 +200,7 @@ node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/{@name}
 You need to build a test instance first:
 
 1. `node build --copy`
-2. `cd site`
-3. `grunt test`
+2. `(cd site; grunt test)`
 
 You need to create a config file `tests/integration/config.php`:
 
@@ -213,6 +218,7 @@ return [
     ],
 ];
 ```
+
 The file should exist before you run `node build --copy`.
 
 Command to run integration tests:
