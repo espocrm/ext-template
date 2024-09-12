@@ -55,7 +55,7 @@ After building, EspoCRM instance with installed extension will be available at `
 
 1. You need to have *node*, *npm*, *composer* installed.
 2. Run `npm install`.
-3. Create a database. The database name is set in the config file.
+3. Create a database. Note that without the created database instance building will fail. The database name is set in the config file. You can change it.
 
 ### Full EspoCRM instance building
 
@@ -143,7 +143,6 @@ You can block out new entity types right in Espo (using Entity Manager) and then
 5. Clear cache in Espo.
 6. Test in Espo.
 7. Commit changes.
-8. Profit.
 
 You can remove `copy-custom.js` from the repository if you don't plan to use it future.
 
