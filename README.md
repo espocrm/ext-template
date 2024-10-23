@@ -12,7 +12,7 @@ php init.php
 
 It will ask to enter an extension name and some other information.
 
-After that, you can remove `init.php` file from your respository. Commit changes and proceed to configuration & building.
+After that, you can remove `init.php` file from your repository. Commit changes and proceed to configuration & building.
 
 
 ## Configuration
@@ -33,7 +33,7 @@ Parameters:
 
 ## Config for EspoCRM instance
 
-You can override EspoCRM config. Create `config.php` in the root directory of the repository. This file will be applied after EspoCRM intallation (when building).
+You can override EspoCRM config. Create `config.php` in the root directory of the repository. This file will be applied after EspoCRM installation (when building).
 
 Example:
 
