@@ -396,6 +396,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/reactions.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/reactions.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/rebuild.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/rebuild.json"
