@@ -193,7 +193,6 @@ Command to run unit tests:
 ```
 node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/{@name}
 ```
-
 ### Integration
 
 You need to build a test instance first:
@@ -202,14 +201,6 @@ You need to build a test instance first:
 2. `(cd site; grunt test)`
 
 You need to create a config file `tests/integration/config.php`:
-
-### Static analysis
-
-Command to run:
-
-```
-(node build --copy; cd site; vendor/bin/phpstan analyse custom/Espo/Modules/{@name})
-```
 
 ```php
 <?php
@@ -232,6 +223,14 @@ Command to run integration tests:
 
 ```
 (cd site && vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
+```
+
+### Static analysis
+
+Command to run:
+
+```
+(node build --copy; cd site; vendor/bin/phpstan analyse custom/Espo/Modules/{@name})
 ```
 
 ## Configuring IDE
