@@ -116,7 +116,7 @@ Necessary steps:
 ```php
 <?php
 return [
-    'version' => '6.2.0',
+    'version' => '9.0.0',
 ];
 
 ```
@@ -205,8 +205,10 @@ You need to create a config file `tests/integration/config.php`:
 
 ### Static analysis
 
+Command to run:
+
 ```
-(cd site; vendor/bin/phpstan analyse custom/Espo/Modules/{@name})
+(node build --copy; cd site; vendor/bin/phpstan analyse custom/Espo/Modules/{@name})
 ```
 
 ```php
