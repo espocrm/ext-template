@@ -191,8 +191,9 @@ Run composer install:
 Command to run unit tests:
 
 ```
-node build --copy; site/vendor/bin/phpunit site/tests/unit/Espo/Modules/{@name}
+(node build --copy; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
 ```
+
 ### Integration
 
 You need to build a test instance first:
@@ -217,12 +218,10 @@ return [
 ];
 ```
 
-The file should exist before you run `node build --copy`.
-
 Command to run integration tests:
 
 ```
-(cd site && vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
+(node build --copy; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
 ### Static analysis
