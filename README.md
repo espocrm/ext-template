@@ -191,7 +191,7 @@ Run composer install:
 Command to run unit tests:
 
 ```
-(node build --copy; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
+(node build --copy; node build --composer-install; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
 ```
 
 ### Integration
@@ -221,7 +221,7 @@ return [
 Command to run integration tests:
 
 ```
-(node build --copy; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
+(node build --copy; node build --composer-install; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
 ### Static analysis
@@ -229,8 +229,12 @@ Command to run integration tests:
 Command to run:
 
 ```
-(node build --copy; cd site; vendor/bin/phpstan analyse custom/Espo/Modules/{@name})
+node build --copy; node build --composer-install; site/vendor/bin/phpstan
 ```
+
+If your extension contains additional PHP packages, you also need to add `site/custom/Espo/Modules/{@name}/vendor` to the *scanDirectories* section in *phpstan.neon* config.
+
+Note: You can ommit *composer-install* command if your extension does not contain PHP packages.
 
 ## Configuring IDE
 
