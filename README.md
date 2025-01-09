@@ -245,7 +245,7 @@ node build --copy; node build --composer-install; site/vendor/bin/phpstan
 
 If your extension contains additional PHP packages, you also need to add `site/custom/Espo/Modules/{@name}/vendor` to the *scanDirectories* section in *phpstan.neon* config.
 
-Note: You can ommit *composer-install* command if your extension does not contain PHP packages.
+Note: You can omit *composer-install* command if your extension does not contain PHP packages.
 
 ## Configuring IDE
 
