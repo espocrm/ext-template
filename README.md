@@ -81,7 +81,7 @@ Command:
 node build --copy
 ```
 
-You can set up a file watcher in your IDE to avoid running this command manually. See below about the file watcher.
+To avoid running this command manually, use a file watcher in your IDE. The configuration for PhpStorm is included in this repository. See below about the file watcher.
 
 ### Running after-install script
 
@@ -267,6 +267,8 @@ File watcher parameters for PhpStorm:
 * Program: `node`
 * Arguments: `build --copy-file --file=$FilePathRelativeToProjectRoot$`
 * Working Directory: `$ProjectFileDir$`
+
+Note: The File Watcher configuration for PhpStorm is included in this reposistory.
 
 ## Using ES modules
 
