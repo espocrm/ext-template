@@ -194,7 +194,7 @@ Fetches the instance and runs composer install. To be used for unit tests and st
 Run composer install:
 
 ```
-`(cd site; composer install)`
+(cd site; composer install)
 ```
 
 Command to run unit tests:
