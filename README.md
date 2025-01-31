@@ -286,6 +286,32 @@ The initialization script asks whether you want to use ES6 modules. If you choos
     }
     ```
 
+## Javascript frontend libraries
+
+Install *rollup*.
+
+In `extension.json`, add a command that will bundle the needed library into an AMD module. Example:
+
+```json
+{
+    "scripts": [
+        "npx rollup node_modules/some-lib/build/esm/index.mjs --format amd --file build/assets/lib/some-lib.js --amd.id some-lib"
+    ]
+}
+```
+
+Add the library module path to `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/jsLibs.json` 
+
+```json
+{
+    "some-lib": {
+        "path": "client/custom/modules/{@nameHyphen}/lib/some-lib.js"
+    }
+}
+```
+
+When you build, the library module will be automatically included in the needed location.
+
 ## License
 
 Change a license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
