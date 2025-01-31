@@ -312,6 +312,8 @@ Add the library module path to `src/files/custom/Espo/Modules/{@name}/Resources/
 
 When you build, the library module will be automatically included in the needed location.
 
+Note that you may also need to create *rollup.config.js* to set some additional Rollup parameters that are not supported via CLI usage.
+
 ## License
 
 Change a license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
