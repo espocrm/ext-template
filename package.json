@@ -17,7 +17,7 @@
   "type": "module",
   "author": "{@author}",
   "dependencies": {
-    "espo-extension-tools": "github:espocrm/extension-tools#0.3.1",
+    "espo-extension-tools": "github:espocrm/extension-tools#0.3.2",
     "fs-extra": "^9.0.0"
   },
   "engines": {
