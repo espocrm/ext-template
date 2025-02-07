@@ -64,7 +64,7 @@ It will download EspoCRM (from the repository specified in the config), then bui
 Command:
 
 ```
-node build --all
+npm run all
 ```
 
 Note: It will remove a previously installed EspoCRM instance, but keep the database intact.
@@ -78,7 +78,7 @@ You need to run this command every time you make changes in `src` directory and 
 Command:
 
 ```
-node build --copy
+npm run copy
 ```
 
 To avoid running this command manually, use a file watcher in your IDE. The configuration for PhpStorm is included in this repository. See below about the file watcher.
@@ -98,7 +98,7 @@ node build --after-install
 Command:
 
 ```
-node build --extension
+npm run extension
 ```
 
 The package will be created in `build` directory.
@@ -129,7 +129,7 @@ Extensions will be installed automatically after running the command `node build
 ## Development workflow
 
 1. Do development in `src` dir.
-2. Run `node build --copy`.
+2. Run `npm run --copy`.
 3. Test changes in EspoCRM instance at `site` dir.
 
 ## Using entity manager to create entities
@@ -183,7 +183,7 @@ npm version major
 To prepare the Espo instance:
 
 ```
-node build --prepare-test
+npm run prepare-test
 ```
 
 Fetches the instance and runs composer install. To be used for unit tests and static analysis in CI environment. Takes less time than the full installation.
@@ -191,7 +191,7 @@ Fetches the instance and runs composer install. To be used for unit tests and st
 
 ### Unit
 
-Run composer install:
+Run composer install for the site:
 
 ```
 (cd site; composer install)
@@ -201,6 +201,12 @@ Command to run unit tests:
 
 ```
 (node build --copy; node build --composer-install; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
+```
+
+or
+
+```
+npm run unit-tests
 ```
 
 ### Integration
@@ -233,6 +239,12 @@ Command to run integration tests:
 (node build --copy; node build --composer-install; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
+or
+
+```
+npm run integration-tests
+```
+
 Note that integration tests needs the full Espo installation.
 
 ### Static analysis
@@ -241,6 +253,12 @@ Command to run:
 
 ```
 node build --copy; node build --composer-install; site/vendor/bin/phpstan
+```
+
+or
+
+```
+npm run sa
 ```
 
 If your extension contains additional PHP packages, you also need to add `site/custom/Espo/Modules/{@name}/vendor` to the *scanDirectories* section in *phpstan.neon* config.
@@ -288,7 +306,7 @@ In `extension.json`, add a command that will bundle the needed library into an A
 }
 ```
 
-Add the library module path to `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/jsLibs.json` 
+Add the library module path to `src/files/custom/Espo/Modules/{@name}/Resources/metadata/app/jsLibs.json`
 
 ```json
 {

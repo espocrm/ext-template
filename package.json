@@ -3,7 +3,16 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sa": "node build --copy && node build --composer-install && php site/vendor/bin/phpstan",
+    "unit-tests": "node build --copy && node build --composer-install && cd site && php vendor/bin/phpunit tests/unit/Espo/Modules/{ModuleName}",
+    "integration-tests": "node build --copy && node build --composer-install && cd site && php vendor/bin/phpunit tests/integration/Espo/Modules/{ModuleName}",
+    "copy": "node build --copy",
+    "composer-install": "node build --composer-install",
+    "extension": "node build --extension",
+    "clear-cache": "php site/clear_cache.php",
+    "rebuild": "node build --rebuild",
+    "all": "node build --all",
+    "prepare-test": "node build --prepare-test"
   },
   "type": "module",
   "author": "{@author}",
