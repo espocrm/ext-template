@@ -84,6 +84,12 @@
         },
         {
             "fileMatch": [
+                "*/metadata/logicDefs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/logicDefs.json"
+        },
+        {
+            "fileMatch": [
                 "*/metadata/notificationDefs/*.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/notificationDefs.json"
