@@ -198,6 +198,18 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/clientIcons.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/clientIcons.json"
+        },
+        {
+            "fileMatch": [
+                "*/Resources/metadata/app/clientRecord.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/clientRecord.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/clientRoutes.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/clientRoutes.json"
