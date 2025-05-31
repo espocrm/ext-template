@@ -8,6 +8,7 @@
     "integration-tests": "node build --copy && node build --composer-install && cd site && php vendor/bin/phpunit tests/integration/Espo/Modules/{ModuleName}",
     "copy": "node build --copy",
     "composer-install": "node build --composer-install",
+    "sync": "node build --copy && node build --composer-install",
     "extension": "node build --extension",
     "clear-cache": "php site/clear_cache.php",
     "rebuild": "node build --rebuild",
@@ -17,7 +18,7 @@
   "type": "module",
   "author": "{@author}",
   "dependencies": {
-    "espo-extension-tools": "github:espocrm/extension-tools#0.3.3",
+    "espo-extension-tools": "github:espocrm/extension-tools#0.3.4",
     "fs-extra": "^9.0.0"
   },
   "engines": {

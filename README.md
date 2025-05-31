@@ -23,12 +23,12 @@ When reading, this config will be merged with `config-default.json`. You can ove
 
 Parameters:
 
-* espocrm.repository - from what repository to fetch EspoCRM;
-* espocrm.branch - what branch to fetch (`stable` is set by default); you can specify version number instead (e.g. `5.9.2`);
+* espocrm.repository – from what repository to fetch EspoCRM;
+* espocrm.branch – what branch to fetch (`stable` is set by default); you can specify version number instead (e.g. `9.1.0`);
 * database - credentials of the dev database;
-* install.siteUrl - site url of the dev instance;
-* install.defaultOwner - a webserver owner (important to be set right);
-* install.defaultGroup - a webserver group (important to be set right).
+* install.siteUrl – site url of the dev instance;
+* install.defaultOwner – a webserver owner (important to be set right);
+* install.defaultGroup – a webserver group (important to be set right).
 
 
 ## Config for EspoCRM instance
@@ -73,12 +73,12 @@ Note: If an error occurred, check `site/data/logs/` for details. It's often a da
 
 ### Copying extension files to EspoCRM instance
 
-You need to run this command every time you make changes in `src` directory and you want to try these changes on Espo instance.
+You need to run this command every time you make changes in `src` directory, and you want to try these changes on Espo instance.
 
 Command:
 
 ```
-npm run copy
+npm run sync
 ```
 
 To avoid running this command manually, use a file watcher in your IDE. The configuration for PhpStorm is included in this repository. See below about the file watcher.
@@ -129,7 +129,7 @@ Extensions will be installed automatically after running the command `node build
 ## Development workflow
 
 1. Do development in `src` dir.
-2. Run `npm run --copy`.
+2. Run `npm run sync`.
 3. Test changes in EspoCRM instance at `site` dir.
 
 ## Using entity manager to create entities
@@ -139,7 +139,7 @@ You can block out new entity types right in Espo (using Entity Manager) and then
 1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
 2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/custom/Espo/Modules/{ModuleName}` and apply needed modifications to files.
 3. Remove files from `site/custom`.
-4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/{ModuleName}` dir).
+4. Run `npm run sync`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/{ModuleName}` dir).
 5. Clear cache in Espo.
 6. Test in Espo.
 7. Commit changes.
@@ -200,7 +200,7 @@ Run composer install for the site:
 Command to run unit tests:
 
 ```
-(node build --copy; node build --composer-install; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
+(npm run sync; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
 ```
 
 or
@@ -213,7 +213,7 @@ npm run unit-tests
 
 You need to build a test instance first:
 
-1. `node build --copy`
+1. `npm run sync`
 2. `(cd site; grunt test)`
 
 You need to create a config file `tests/integration/config.php`:
@@ -236,7 +236,7 @@ return [
 Command to run integration tests:
 
 ```
-(node build --copy; node build --composer-install; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
+(npm run sync; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
 or
@@ -252,7 +252,7 @@ Note that integration tests needs the full Espo installation.
 Command to run:
 
 ```
-node build --copy; node build --composer-install; site/vendor/bin/phpstan
+npm run sync; site/vendor/bin/phpstan
 ```
 
 or
@@ -286,7 +286,7 @@ File watcher parameters for PhpStorm:
 * Arguments: `build --copy-file --file=$FilePathRelativeToProjectRoot$`
 * Working Directory: `$ProjectFileDir$`
 
-Note: The File Watcher configuration for PhpStorm is included in this reposistory.
+Note: The File Watcher configuration for PhpStorm is included in this repository.
 
 ## Using ES modules
 
