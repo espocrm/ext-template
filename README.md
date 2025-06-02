@@ -334,6 +334,23 @@ When you build, the library module will be automatically included in the needed 
 
 Note that you may also need to create *rollup.config.js* to set some additional Rollup parameters that are not supported via CLI usage.
 
+## Updating tooling libraries
+
+Update the version number of espo-extension-tools in package.json to the [latest one](https://github.com/espocrm/extension-tools/releases).
+
+Run:
+
+```
+npm update espo-extension-tools
+npm update espo-frontend-build-tools
+```
+
+Or just update everything:
+
+```
+npm update
+```
+
 ## License
 
 Change a license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
