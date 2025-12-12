@@ -14,6 +14,8 @@ It will ask to enter an extension name and some other information.
 
 After that, you can remove `init.php` file from your repository. Commit changes and proceed to configuration & building.
 
+After initialization, placeholders in the readme file will be replaced with values specific to your extension.
+Use that changed readme as the documentation.
 
 ## Configuration
 
