@@ -294,7 +294,7 @@ Note: The File Watcher configuration for PhpStorm is included in this repository
 
 The initialization script asks whether you want to use ES6 modules. It's recommended to choose "YES".
 
-If you want to switch to ES6 later:
+If you have chosen No and want to switch to ES6 later, then:
 
 1. Set *bundled* to true in `extension.json`.
 2. Set *bundled* and *jsTranspiled* to true in `src/files/custom/Espo/Modules/{@name}/Resources/module.json`.
