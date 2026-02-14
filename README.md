@@ -139,9 +139,9 @@ Extensions will be installed automatically after running the command `node build
 You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
 
 1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
-2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/custom/Espo/Modules/{ModuleName}` and apply needed modifications to files.
+2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/custom/Espo/Modules/{@name}` and apply needed modifications to files.
 3. Remove files from `site/custom`.
-4. Run `npm run sync`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/{ModuleName}` dir).
+4. Run `npm run sync`. It will copy files from the repository to Espo build (`site/custom//Espo/Modules/{@name}` dir).
 5. Clear cache in Espo.
 6. Test in Espo.
 7. Commit changes.
@@ -152,9 +152,9 @@ You can remove `copy-custom.js` from the repository if you don't plan to use it 
 
 If your extension requires additional libraries, they can be installed by composer:
 
-1. Create a file `src/files/custom/Espo/Modules/{ModuleName}/composer.json` with your dependencies.
+1. Create a file `src/files/custom/Espo/Modules/{@name}/composer.json` with your dependencies.
 2. Once you run `node build --all` or `node build --composer-install`, composer dependencies will be automatically installed.
-3. Create a file `src/files/custom/Espo/Modules/{ModuleName}/Resources/autoload.json`.
+3. Create a file `src/files/custom/Espo/Modules/{@name}/Resources/autoload.json`.
 
 Note: The extension build will contain only the `vendor` directory without the `composer.json` file.
 
@@ -163,7 +163,7 @@ The `autoload.json` file defines paths for namespaces:
 ```json
 {
     "psr-4": {
-        "LibraryNamespace\\": "custom/Espo/Modules/{ModuleName}/vendor/<vendor-name>/<library-name>/path/to/src"
+        "LibraryNamespace\\": "custom/Espo/Modules/{@name}/vendor/<vendor-name>/<library-name>/path/to/src"
     }
 }
 ```
