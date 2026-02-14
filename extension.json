@@ -5,10 +5,10 @@
     "author": "{@author}",
     "bundled": {@bundled},
     "acceptableVersions": [
-        ">=9.1.0"
+        ">=9.3.0"
     ],
     "php": [
-        ">=8.2"
+        ">=8.3"
     ],
     "scripts": []
 }
