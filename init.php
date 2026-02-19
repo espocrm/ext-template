@@ -9,7 +9,7 @@ $nameLabel = $name;
 
 $name = ucfirst($name);
 
-$name = str_replace(' ', '', ucwords(preg_replace('/^a-z0-9]+/', ' ', $name)));
+$name = str_replace(' ', '', ucwords(preg_replace('/[^a-z0-9]+/', ' ', $name)));
 $nameHyphen = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $name));
 
 fwrite(\STDOUT, "Enter a description text:\n");
