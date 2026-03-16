@@ -10,12 +10,12 @@ Run:
 php init.php
 ```
 
-It will ask to enter an extension name and some other information.
-
-After that, you can remove `init.php` file from your repository. Commit changes and proceed to configuration & building.
+It will ask to enter an extension name and some other information. After the initialization, the script will prompt you to run `npm install`.
 
 After initialization, placeholders in the readme file will be replaced with values specific to your extension.
 Use the changed readme as the documentation.
+
+After initialization, you can remove `init.php` file from your repository. Commit changes and proceed to configuration & building.
 
 ## Configuration
 
@@ -56,7 +56,7 @@ After building, EspoCRM instance with installed extension will be available at `
 ### Preparation
 
 1. You need to have *node*, *npm*, *composer* installed.
-2. Run `npm install`.
+2. Run `npm install` (or `npm ci` if you are not building the extension from scratch).
 3. Create a database. Note that without the created database instance building will fail. The database name is set in the config file. You can change it.
 
 ### Full EspoCRM instance building
@@ -218,22 +218,22 @@ You need to build a test instance first:
 1. `npm run sync`
 2. `(cd site; grunt test)`
 
-You need to create a config file `tests/integration/config.php`:
-
-```php
-<?php
-
-return [
-    'database' => [
-        'driver' => 'pdo_mysql',
-        'host' => 'localhost',
-        'charset' => 'utf8mb4',
-        'dbname' => 'TEST_DB_NAME',
-        'user' => 'YOUR_DB_USER',
-        'password' => 'YOUR_DB_PASSWORD',
-    ],
-];
-```
+    You need to create a config file `tests/integration/config.php`:
+    
+    ```php
+    <?php
+    
+    return [
+        'database' => [
+            'driver' => 'pdo_mysql',
+            'host' => 'localhost',
+            'charset' => 'utf8mb4',
+            'dbname' => 'TEST_DB_NAME',
+            'user' => 'YOUR_DB_USER',
+            'password' => 'YOUR_DB_PASSWORD',
+        ],
+    ];
+    ```
 
 Command to run integration tests:
 
