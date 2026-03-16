@@ -152,7 +152,7 @@ You can remove `copy-custom.js` from the repository if you don't plan to use it 
 
 If your extension requires additional libraries, they can be installed by composer:
 
-1. Create a file `src/files/custom/Espo/Modules/{@name}/composer.json` with your dependencies.
+1. Create a file `src/files/custom/Espo/Modules/{@name}/composer.json` with your dependencies. You can change dir to this directory and add composer dependencies using *composer require*.
 2. Once you run `node build --all` or `node build --composer-install`, composer dependencies will be automatically installed.
 3. Create a file `src/files/custom/Espo/Modules/{@name}/Resources/autoload.json`.
 
@@ -167,6 +167,8 @@ The `autoload.json` file defines paths for namespaces:
     }
 }
 ```
+
+This definition is needed because in EspoCRM extensions are not installed via composer, they are included in runtime.
 
 ## Versioning
 
