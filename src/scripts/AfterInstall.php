@@ -2,6 +2,7 @@
 
 use Espo\Core\Container;
 use Espo\Core\InjectableFactory;
+use Espo\Core\Utils\Config;
 use Espo\Core\Utils\Config\ConfigWriter;
 use Espo\ORM\EntityManager;
 
@@ -17,6 +18,8 @@ class AfterInstall
 
         // Use to add parameter values to the config.
         $configWriter = $container->getByClass(InjectableFactory::class)->create(ConfigWriter::class);
+
+        $config = $container->getByClass(Config::class);
     }
 }
 
