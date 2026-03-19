@@ -6,4 +6,5 @@
 /config.php
 /extensions/
 /src/files/custom/Espo/Modules/*/vendor/
-
+/vendor
+/composer.lock
