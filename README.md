@@ -2,7 +2,11 @@
 
 Create a repository for your extension from this template.
 
+(rename the header after initialization and change the text of the paragraph)
+
 ## Preparing repository
+
+(remove this section after initialization)
 
 Run:
 
@@ -15,7 +19,7 @@ It will ask to enter an extension name and some other information. After the ini
 After initialization, placeholders in the readme file will be replaced with values specific to your extension.
 Use the changed readme as the documentation.
 
-After initialization, you can remove `init.php` file from your repository. Commit changes and proceed to configuration & building.
+After initialization, you can remove `init.php` file from your repository. Commit the changes and proceed to configuration & building.
 
 ## Configuration
 
@@ -115,13 +119,12 @@ Necessary steps:
 
 1. Add the current EspoCRM version to the `config.php`:
 
-```php
-<?php
-return [
-    'version' => '9.0.0',
-];
-
-```
+    ```php
+    <?php
+    return [
+        'version' => '9.3.0',
+    ];
+    ```
 
 2. Create the `extensions` directory in the root directory of your repository.
 3. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
@@ -184,36 +187,70 @@ npm version major
 
 ## Tests
 
-To prepare the Espo instance:
+To prepare an Espo instance for tests, run:
 
 ```
 npm run prepare-test
 ```
 
-Fetches the instance and runs composer install. To be used for unit tests and static analysis in CI environment. Takes less time than the full installation.
+It downloads the Espo package, unzips it in the *site* directory, and then runs composer install. To be used for unit tests and static analysis in CI environment as it takes less time than the full installation (with database).
 
+### Unit tests
 
-### Unit
-
-Run composer install for the site:
+You need to install composer dev dependencies in the root first:
 
 ```
-(cd site; composer install)
+composer install
 ```
+
+This root composer serves only for unit tests static analysis.
 
 Command to run unit tests:
 
 ```
-(npm run sync; cd site; vendor/bin/phpunit tests/unit/Espo/Modules/{@name})
+vendor/bin/phpunit
 ```
 
-or
+or with a path:
+
+```
+vendor/bin/phpunit tests/unit/Espo/Modules/{@name}
+```
+
+or:
 
 ```
 npm run unit-tests
 ```
 
-### Integration
+Unit tests should be placed in `tests/unit/Espo/Modules/{@name}` directory and be in `tests\unit\Espo\Modules\{@name}`
+namespace.
+
+### Static analysis
+
+You need to install composer dev dependencies in the root first:
+
+```
+composer install
+```
+
+Command to run static analysis:
+
+```
+vendor/bin/phpstan
+```
+
+or:
+
+```
+npm run sa
+```
+
+PHPStan scans sources in the *src* and *site* directories as it's configured in *phpstan.neon*.
+
+### Integration tests
+
+Integrations tests are run from the *site* directory.
 
 You need to build a test instance first:
 
@@ -221,10 +258,10 @@ You need to build a test instance first:
 2. `(cd site; grunt test)`
 
     You need to create a config file `tests/integration/config.php`:
-    
+
     ```php
     <?php
-    
+
     return [
         'database' => [
             'driver' => 'pdo_mysql',
@@ -243,7 +280,7 @@ Command to run integration tests:
 (npm run sync; cd site; vendor/bin/phpunit tests/integration/Espo/Modules/{@name})
 ```
 
-or
+or:
 
 ```
 npm run integration-tests
@@ -251,23 +288,8 @@ npm run integration-tests
 
 Note that integration tests needs the full Espo installation.
 
-### Static analysis
-
-Command to run:
-
-```
-npm run sync; site/vendor/bin/phpstan
-```
-
-or
-
-```
-npm run sa
-```
-
-If your extension contains additional PHP packages, you also need to add `site/custom/Espo/Modules/{@name}/vendor` to the *scanDirectories* section in *phpstan.neon* config.
-
-Note: You can omit *composer-install* command if your extension does not contain PHP packages.
+Integration tests should be placed in `tests/integration/Espo/Modules/{@name}` directory
+and be in `tests\integration\Espo\Modules\{@name}` namespace.
 
 ## Configuring IDE
 
@@ -282,6 +304,8 @@ You need to set the following paths to be ignored in your IDE:
 
 ### File watcher
 
+Note: The File Watcher configuration for PhpStorm is included in this repository (no need to configure).
+
 You can set up a file watcher in the IDE to automatically copy and transpile files upon saving.
 
 File watcher parameters for PhpStorm:
@@ -289,8 +313,6 @@ File watcher parameters for PhpStorm:
 * Program: `node`
 * Arguments: `build --copy-file --file=$FilePathRelativeToProjectRoot$`
 * Working Directory: `$ProjectFileDir$`
-
-Note: The File Watcher configuration for PhpStorm is included in this repository.
 
 ## Using ES modules
 
@@ -356,5 +378,7 @@ npm update
 ```
 
 ## License
+
+(change this section after initialization)
 
 Change the license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.

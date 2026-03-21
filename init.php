@@ -51,6 +51,7 @@ $replacePlaceholders('extension.json');
 $replacePlaceholders('jsconfig.json');
 $replacePlaceholders('config-default.json');
 $replacePlaceholders('phpstan.neon');
+$replacePlaceholders('composer.json');
 $replacePlaceholders('README.md');
 $replacePlaceholders('src/files/custom/Espo/Modules/MyModuleName/Resources/module.json');
 
