@@ -11,8 +11,3 @@ parameters:
         - site/application
         - site/vendor
         - site/custom/Espo/Modules/{@name}/vendor
-services:
-    -
-        class: EspoDev\PHPStan\Extensions\EntityManagerReturnType
-        tags:
-            - phpstan.broker.dynamicMethodReturnTypeExtension
