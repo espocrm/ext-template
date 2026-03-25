@@ -173,6 +173,15 @@ The `autoload.json` file defines paths for namespaces:
 
 This definition is needed because in EspoCRM extensions are not installed via composer, they are included in runtime.
 
+For static analysis, add to `phpstan.neon`:
+
+```
+    excludePaths:
+        - src/files/custom/Espo/Modules/{@name}/vendor
+    scanDirectories:
+        - site/custom/Espo/Modules/{@name}/vendor
+```
+
 ## Versioning
 
 The version number is stored in `package.json` and `package-lock.json`.
