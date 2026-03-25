@@ -4,10 +4,7 @@ parameters:
     treatPhpDocTypesAsCertain: false
     paths:
         - src/files/custom
-    excludePaths:
-        - src/files/custom/Espo/Modules/{@name}/vendor
     reportUnmatchedIgnoredErrors: false
     scanDirectories:
         - site/application
         - site/vendor
-        - site/custom/Espo/Modules/{@name}/vendor
