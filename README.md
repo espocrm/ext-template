@@ -300,6 +300,11 @@ Note that integration tests needs the full Espo installation.
 Integration tests should be placed in `tests/integration/Espo/Modules/{@name}` directory
 and be in `tests\integration\Espo\Modules\{@name}` namespace.
 
+### GitHub workflow
+
+A workflow running unit tests and static analysis is defined in `.github/workflows/test.yml.disabled`.
+Remove `.disabled` from the filename to activate the workflow.
+
 ## Configuring IDE
 
 You need to set the following paths to be ignored in your IDE:
