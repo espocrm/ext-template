@@ -9,7 +9,8 @@
         "charset": "utf8mb4",
         "dbname": "ext-{@nameHyphen}",
         "user": "root",
-        "password": ""
+        "password": "",
+        "platform": "Mysql"
     },
     "install": {
         "language": "en_US",
