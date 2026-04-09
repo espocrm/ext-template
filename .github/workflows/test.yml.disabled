@@ -1,0 +1,68 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'fix'
+    paths:
+      - '**.php'
+      - '**.json'
+      - '**.yml'
+      - 'composer.lock'
+      - 'phpstan.neon'
+
+  pull_request:
+    paths:
+      - '**.php'
+      - '**.json'
+      - '**.yml'
+      - 'composer.lock'
+      - 'phpstan.neon'
+      
+jobs:
+  test:
+    name: Test on PHP ${{ matrix.php-versions }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ['8.5']
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Checkout site
+      uses: actions/checkout@v4
+      with:
+        repository: espocrm/espocrm
+        ref: stable
+        path: site
+        fetch-depth: 1
+        sparse-checkout: |
+          application/
+          custom/
+          dev/
+          bootstrap.php
+          composer.json
+          composer.lock
+          
+    - name: Setup PHP with Composer
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        tools: composer:v2
+        ini-values: memory_limit=1024M
+        
+    - name: Composer install in site
+      run: composer install
+      working-directory: site
+      
+    - name: Composer install 
+      run: composer install
+      
+    - name: Static analysis
+      run: vendor/bin/phpstan
+
+    - name: Unit testing
+      run: vendor/bin/phpunit tests/unit
+      
