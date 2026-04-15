@@ -19,7 +19,7 @@ on:
       - '**.yml'
       - 'composer.lock'
       - 'phpstan.neon'
-      
+
 jobs:
   test:
     name: Test on PHP ${{ matrix.php-versions }}
@@ -30,7 +30,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Checkout site
       uses: actions/checkout@v4
       with:
@@ -45,24 +45,39 @@ jobs:
           bootstrap.php
           composer.json
           composer.lock
-          
+
     - name: Setup PHP with Composer
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
         tools: composer:v2
         ini-values: memory_limit=1024M
-        
+
+    - name: Cache Site Vendor
+      id: cache-site-vendor
+      uses: actions/cache@v4
+      with:
+        path: site/vendor
+        key: ${{ runner.os }}-site-vendor-${{ hashFiles('site/composer.lock') }}
+
+    - name: Cache Vendor
+      id: cache-vendor
+      uses: actions/cache@v4
+      with:
+        path: vendor
+        key: ${{ runner.os }}-vendor-${{ hashFiles('composer.lock') }}
+
     - name: Composer install in site
+      if: steps.cache-site-vendor.outputs.cache-hit != 'true'
       run: composer install
       working-directory: site
-      
-    - name: Composer install 
+
+    - name: Composer install
+      if: steps.cache-vendor.outputs.cache-hit != 'true'
       run: composer install
-      
+
     - name: Static analysis
       run: vendor/bin/phpstan
 
     - name: Unit testing
       run: vendor/bin/phpunit tests/unit
-      
