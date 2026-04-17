@@ -10,7 +10,7 @@
     "composer-install": "node build --composer-install",
     "sync": "node build --copy && node build --composer-install",
     "extension": "node build --extension",
-    "clear-cache": "php site/clear_cache.php",
+    "clear-cache": "cd site && php clear_cache.php",
     "rebuild": "node build --rebuild",
     "all": "node build --all",
     "prepare-test": "node build --prepare-test"
