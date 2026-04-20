@@ -49,6 +49,7 @@ $replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLab
 $replacePlaceholders('package.json');
 $replacePlaceholders('extension.json');
 $replacePlaceholders('jsconfig.json');
+$replacePlaceholders('tsconfig.json');
 $replacePlaceholders('config-default.json');
 $replacePlaceholders('phpstan.neon');
 $replacePlaceholders('composer.json');

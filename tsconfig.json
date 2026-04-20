@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "*": ["site/client/src/*"],
+            "modules/crm/*": ["site/client/modules/crm/src/*"],
+            "modules/{@nameHyphen}/*": ["src/files/client/custom/modules/{@nameHyphen}/src/*"]
+        },
+        "module": "ES6",
+        "target": "ES2018",
+        "moduleResolution": "bundler",
+        "skipLibCheck": true,
+        "allowJs": true,
+        "checkJs": false,
+        "noEmit": true
+    }
+}
