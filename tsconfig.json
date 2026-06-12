@@ -17,8 +17,7 @@
         "allowJs": true,
         "checkJs": false,
         "noEmit": true,
-        "strictPropertyInitialization": false,
-        "noResolve": true
+        "strictPropertyInitialization": false
     },
     "include": [
         "src/files/client/custom/modules/{@nameHyphen}/src"
