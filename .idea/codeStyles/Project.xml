@@ -10,6 +10,9 @@
       <option name="KEEP_RPAREN_AND_LBRACE_ON_ONE_LINE" value="true" />
       <option name="FORCE_EMPTY_METHODS_IN_ONE_LINE" value="true" />
     </PHPCodeStyleSettings>
+    <TypeScriptCodeStyleSettings version="0">
+      <option name="USE_DOUBLE_QUOTES" value="false" />
+    </TypeScriptCodeStyleSettings>
     <codeStyleSettings language="JSON">
       <indentOptions>
         <option name="INDENT_SIZE" value="4" />
