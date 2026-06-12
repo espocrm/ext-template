@@ -10,6 +10,7 @@
         "lib": [
             "ES2019",
             "Decorators",
+            "DOM",
             "DOM.Iterable"
         ],
         "moduleResolution": "bundler",
@@ -20,6 +21,7 @@
         "strictPropertyInitialization": false
     },
     "include": [
-        "src/files/client/custom/modules/{@nameHyphen}/src"
+        "src/files/client/custom/modules/{@nameHyphen}/src",
+        "site/client/src/global.d.ts"
     ]
 }
