@@ -346,7 +346,7 @@ If you have chosen No and want to switch to ES6 later, then:
     }
     ```
 
-## Javascript frontend libraries
+## JavaScript frontend libraries
 
 Install *rollup*.
 
