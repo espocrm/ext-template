@@ -77,6 +77,7 @@ Note: It will remove a previously installed EspoCRM instance, but keep the datab
 
 Note: If an error occurred, check `site/data/logs/` for details. It's often a database is not created.
 
+After the instance is ready, if your webserver is run under another user, you might need to fix file [ownership](https://docs.espocrm.com/administration/server-configuration/#ownership) (in the `site` directory).
 
 ### Copying extension files to EspoCRM instance
 
