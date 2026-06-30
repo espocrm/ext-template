@@ -89,7 +89,7 @@ Command:
 npm run sync
 ```
 
-To avoid running this command manually, use a file watcher in your IDE. The configuration for PhpStorm is included in this repository. See below about the file watcher.
+To avoid running this command manually, use a file watcher in your IDE. The configuration for PhpStorm is included in this repository and enabled by default (no need any extra configuration). See below about the file watcher.
 
 ### Running after-install script
 
