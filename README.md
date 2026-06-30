@@ -73,9 +73,9 @@ Command:
 npm run all
 ```
 
-Note: It will remove a previously installed EspoCRM instance, but keep the database intact.
-
 Note: If an error occurred, check `site/data/logs/` for details. It's often a database is not created.
+
+The command removes the previously installed EspoCRM instance, but keep the database intact. Use this command to update the dev instance to the latest version or to any specific version (*espocrm.branch* parameter in the config).
 
 After the instance is ready, if your webserver is run under another user, you might need to fix file [ownership](https://docs.espocrm.com/administration/server-configuration/#ownership) (in the `site` directory).
 
