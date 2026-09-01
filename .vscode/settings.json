@@ -306,6 +306,12 @@
         },
         {
             "fileMatch": [
+                "*/Resources/metadata/app/entryPoints.json"
+            ],
+            "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/entryPoints.json"
+        },
+        {
+            "fileMatch": [
                 "*/Resources/metadata/app/export.json"
             ],
             "url": "https://raw.githubusercontent.com/espocrm/espocrm/master/schema/metadata/app/export.json"
