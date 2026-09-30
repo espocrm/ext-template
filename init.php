@@ -31,7 +31,8 @@ $bundled = $es6 ? "true" : "false";
 $jsTranspiled = $es6 ? "true" : "false";
 fclose($fh);
 
-$replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLabel, $description, $author, $bundled, $jsTranspiled)
+$replacePlaceholders = function (string $file) use
+    ($name, $nameHyphen, $nameLabel, $description, $author, $bundled, $jsTranspiled)
 {
     $content = file_get_contents($file);
 
@@ -46,15 +47,22 @@ $replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLab
     file_put_contents($file, $content);
 };
 
-$replacePlaceholders('package.json');
-$replacePlaceholders('extension.json');
-$replacePlaceholders('jsconfig.json');
-$replacePlaceholders('tsconfig.json');
-$replacePlaceholders('config-default.json');
-$replacePlaceholders('phpstan.neon');
-$replacePlaceholders('composer.json');
-$replacePlaceholders('README.md');
-$replacePlaceholders('src/files/custom/Espo/Modules/MyModuleName/Resources/module.json');
+$files = [
+    'package.json',
+    'extension.json',
+    'jsconfig.json',
+    'tsconfig.json',
+    'config-default.json',
+    'phpstan.neon',
+    'composer.json',
+    'README.md',
+    'src/files/custom/Espo/Modules/MyModuleName/Resources/module.json',
+    '.github/workflows/test.yml.disabled',
+];
+
+foreach ($files as $file) {
+    $replacePlaceholders($file);
+}
 
 if ($es6) {
     $content = <<<CLIENT_JSON

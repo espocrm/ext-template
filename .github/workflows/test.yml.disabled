@@ -76,6 +76,25 @@ jobs:
       if: steps.cache-vendor.outputs.cache-hit != 'true'
       run: composer install
 
+#    - name: Copy module composer files
+#      run: |
+#        mkdir -p site/custom/Espo/Modules/{@name}/
+#        cp src/files/custom/Espo/Modules/{@name}/composer.json \
+#          src/files/custom/Espo/Modules/{@name}/composer.lock \
+#          site/custom/Espo/Modules/{@name}/
+#
+#    - name: Cache Module Vendor
+#      id: cache-module-vendor
+#      uses: actions/cache@v4
+#      with:
+#        path: site/custom/Espo/Modules/{@name}/vendor
+#        key: ${{ runner.os }}-module-${{ hashFiles('composer.lock') }}
+#
+#    - name: Composer install in module
+#      if: steps.cache-module-vendor.outputs.cache-hit != 'true'
+#      run: composer install
+#      working-directory: site/custom/Espo/Modules/{@name}/
+
     - name: Static analysis
       run: vendor/bin/phpstan
 
