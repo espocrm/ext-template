@@ -9,7 +9,7 @@ on:
       - '**.php'
       - '**.json'
       - '**.yml'
-      - 'composer.lock'
+      - '**/composer.lock'
       - 'phpstan.neon'
 
   pull_request:
@@ -17,7 +17,7 @@ on:
       - '**.php'
       - '**.json'
       - '**.yml'
-      - 'composer.lock'
+      - '**/composer.lock'
       - 'phpstan.neon'
 
 jobs:
